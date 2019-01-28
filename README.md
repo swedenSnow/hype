@@ -1,14 +1,14 @@
 # Hype-gear
 
-- [Available Scripts](#available-scripts)
-  - [npm run dev](#npm-run-dev)
-  - [npm run build](#npm-run-build)
-  - [npm run start](#npm-run-start)
+-   [Available Scripts](#available-scripts)
+    -   [yarn dev](#npm-run-dev)
+    -   [yarn build](#npm-run-build)
+    -   [yarn start](#npm-run-start)
 
 ## Requires
 
-- [Node](https://nodejs.org/en/download)
-- [yarn](https://yarnpkg.com/lang/en/)
+-   [Node](https://nodejs.org/en/download)
+-   [yarn](https://yarnpkg.com/lang/en/)
 
 ### Installation
 
