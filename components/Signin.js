@@ -4,9 +4,11 @@ import styled from 'styled-components';
 const SigninForm = styled.div`
 	width: 25%;
 	form {
+		padding: 1rem;
 		label {
 			display: block;
 			margin-bottom: 0.5rem;
+			font-weight: 700;
 		}
 
 		input {
@@ -29,7 +31,7 @@ class Signin extends Component {
 	render() {
 		return (
 			<SigninForm>
-				<form>
+				<form method="post">
 					<label htmlFor="email">
 						E-mail:
 						<input type="text" name="email" />
