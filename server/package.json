@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server side",
+  "main": "index.js",
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "dotenv": "^6.2.0",
+    "graphql": "^14.1.1",
+    "graphql-cli": "^3.0.9",
+    "graphql-yoga": "^1.17.4",
+    "nodemon": "^1.18.10",
+    "prisma": "^1.26.4",
+    "prisma-binding": "^2.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "deploy": "prisma deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
