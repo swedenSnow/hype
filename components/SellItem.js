@@ -26,7 +26,7 @@ class SellItem extends Component {
 						Description
 						<textarea name="description" />
 					</label>
-					<button>Sell Item</button>
+					<button disabled>Sell Item</button>
 				</form>
 			</SellItemForm>
 		);

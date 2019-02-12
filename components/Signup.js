@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { SigninForm } from './styles/SigninForm';
+import { SignupForm } from './styles/SignupForm';
 
 class Signup extends Component {
 	render() {
 		return (
-			<SigninForm>
+			<SignupForm>
 				<form method="post">
+					<label htmlFor="name">
+						Name:
+						<input type="text" name="name" />
+					</label>
 					<label htmlFor="email">
 						E-mail:
 						<input type="text" name="email" />
@@ -19,9 +23,9 @@ class Signup extends Component {
 						<input type="password" name="password-again" />
 					</label>
 					Toggle Show Password!!
-					<button>Sign Up</button>
+					<button disabled>Sign Up</button>
 				</form>
-			</SigninForm>
+			</SignupForm>
 		);
 	}
 }

@@ -4,7 +4,7 @@ import Orders from '../components/Orders';
 const OrdersPage = () => (
 	<div>
 		<Head>
-			<title>Hype-gear || Order</title>
+			<title>Hype-gear || My Orders</title>
 		</Head>
 		<div>
 			<p>Show orders here...</p>
