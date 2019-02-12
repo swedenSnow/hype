@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Item from '../components/Item';
+import SingleItem from '../components/SingleItem';
 
 const ItemPage = () => (
 	<div>
@@ -7,7 +7,7 @@ const ItemPage = () => (
 			<title>Hype-gear || Item name</title>
 		</Head>
 		<div>Show an item here</div>
-		<Item />
+		<SingleItem />
 	</div>
 );
 

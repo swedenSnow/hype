@@ -1,5 +1,6 @@
 import React from 'react';
 //import Link from 'next/link';
+import Item from './Item';
 
 const testItem1 = {
 	id: 0,
@@ -27,6 +28,11 @@ const itemsArray = [testItem1, testItem2, testItem3];
 // ToDo: map test items meanwhile...
 // Next Link and send in the item? or the whole god damn array... dunno.
 
-const Items = props => <div>Some Items here...</div>;
+const Items = props => (
+	<div>
+		Some Items here...
+		<Item />
+	</div>
+);
 
 export default Items;
