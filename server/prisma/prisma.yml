@@ -1,6 +1,5 @@
 endpoint: https://eu1.prisma.sh/mikael-larsson/hype-gear/dev
 datamodel: datamodel.prisma
-
-hooks: 
+hooks:
   post-deploy:
-    - graphql get-schema -p hype-gear
+    - graphql get-schema -p prisma
