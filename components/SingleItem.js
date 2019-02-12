@@ -17,6 +17,11 @@ class SingleItem extends Component {
 					src="https://img.mytheresa.com/1088/1088/66/jpeg/catalog/product/15/P00324844.jpg"
 					alt="Test Item Image"
 				/>
+				<p>
+					<strong>Description:</strong>
+					<br />
+					This is some cool shoes, right?
+				</p>
 				<AddToCart />
 				<hr />
 				<Link href="/shop">

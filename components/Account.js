@@ -10,6 +10,10 @@ class Account extends Component {
 				<Link href="/orders">
 					<a>My Orders</a>
 				</Link>
+				Update Details
+				<br />
+				Change Password
+				<br />
 			</div>
 		);
 	}

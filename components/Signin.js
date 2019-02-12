@@ -6,15 +6,17 @@ class Signin extends Component {
 		return (
 			<SigninForm>
 				<form method="post">
-					<label htmlFor="email">
-						E-mail:
-						<input type="text" name="email" />
-					</label>
-					<label htmlFor="password">
-						Password:
-						<input type="password" name="password" />
-					</label>
-					<button disabled>Sign In</button>
+					<fieldset>
+						<label htmlFor="email">
+							E-mail:
+							<input type="text" name="email" />
+						</label>
+						<label htmlFor="password">
+							Password:
+							<input type="password" name="password" />
+						</label>
+						<button disabled>Sign In</button>
+					</fieldset>
 				</form>
 			</SigninForm>
 		);
