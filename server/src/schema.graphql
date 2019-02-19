@@ -1,13 +1,22 @@
 # import * from './generated/prisma.graphql'
 
+type ActionMessage {
+    message: String
+}
+
 type Query {
-  posts(searchString: String): [Post!]!
-  user(id: ID!): User
+    user(id: ID!): User
+    self: User
+    item(where: ItemWhereUniqueInput!): Item
 }
 
 type Mutation {
-  createDraft(authorId: ID!, title: String!, content: String!): Post
-  publish(id: ID!): Post
-  deletePost(id: ID!): Post
-  signup(name: String!): User!
+    signup(email: String!, password: String!, confirmPassword: String!): User!
+    signout: ActionMessage
+    createItem(
+        title: String!
+        description: String!
+        price: Int!
+        image: String!
+    ): Item!
 }

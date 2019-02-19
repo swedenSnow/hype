@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Account from '../components/Account';
 
-const AccountPage = () => (
+const AccountPage = props => (
 	<div>
 		<Head>
 			<title>Hype-gear || My Account </title>

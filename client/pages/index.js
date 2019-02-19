@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import FeaturedItems from '../components/FeaturedItems';
 
-const HomePage = () => (
+const HomePage = props => (
 	<div>
 		<Head>
 			<title>Hype-gear || Home</title>
