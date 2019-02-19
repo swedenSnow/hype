@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const FooterStyled = styled.footer`
-	background-color: #000;
+	background-color: ${props => props.theme.blue};
+	box-shadow: ${props => props.theme.boxShadow};
 	color: #fff;
 	position: absolute;
 	bottom: 0;
