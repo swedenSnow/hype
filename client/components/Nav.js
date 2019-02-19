@@ -19,6 +19,14 @@ const NavStyled = styled.nav`
 			padding-right: 1em;
 		}
 	}
+
+	button {
+		background: transparent;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+
 	@media (max-width: 800px) {
 		font-size: ${props => props.theme.root};
 	}
