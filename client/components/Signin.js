@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import Link from 'next/link';
 import { SigninForm } from './styles/SigninForm';
 
 const SIGNIN_MUTATION = gql`
@@ -27,31 +28,38 @@ class Signin extends Component {
 
 	render() {
 		return (
-			<SigninForm>
-				<form method="post">
-					<fieldset>
-						<label htmlFor="email">
-							E-mail:
-							<input
-								type="text"
-								name="email"
-								value={this.state.email}
-								onChange={this.handleChange}
-							/>
-						</label>
-						<label htmlFor="password">
-							Password:
-							<input
-								type="password"
-								name="password"
-								value={this.state.password}
-								onChange={this.handleChange}
-							/>
-						</label>
-						<button disabled>Sign In</button>
-					</fieldset>
-				</form>
-			</SigninForm>
+			<div>
+				<SigninForm>
+					<form method="post">
+						<fieldset>
+							<label htmlFor="email">
+								E-mail:
+								<input
+									type="text"
+									name="email"
+									value={this.state.email}
+									onChange={this.handleChange}
+								/>
+							</label>
+							<label htmlFor="password">
+								Password:
+								<input
+									type="password"
+									name="password"
+									value={this.state.password}
+									onChange={this.handleChange}
+								/>
+							</label>
+							<button>Sign In</button>
+						</fieldset>
+					</form>
+				</SigninForm>
+				<div>
+					<Link href="/forgotpassword">
+						<a>Click here if you have forgotten your password.</a>
+					</Link>
+				</div>
+			</div>
 		);
 	}
 }
