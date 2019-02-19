@@ -1,25 +1,27 @@
 import React from 'react';
-//import Link from 'next/link';
 import Item from './Item';
 
 const testItem1 = {
 	id: 0,
-	name: 'Test Item #1',
+	title: 'Test Item #1',
 	price: 1000,
+	image: '',
 	description: 'This is just for testing',
 };
 
 const testItem2 = {
 	id: 1,
-	name: 'Test Item #2',
+	title: 'Test Item #2',
 	price: 2000,
+	image: '',
 	description: 'This is just for testing',
 };
 
 const testItem3 = {
 	id: 2,
-	name: 'Test Item #3',
+	title: 'Test Item #3',
 	price: 3000,
+	image: '',
 	description: 'This is just for testing',
 };
 
@@ -30,8 +32,9 @@ const itemsArray = [testItem1, testItem2, testItem3];
 
 const Items = props => (
 	<div>
-		Some Items here...
-		<Item />
+		{itemsArray.map(item => {
+			return <Item key={item.id} item={item} />;
+		})}
 	</div>
 );
 

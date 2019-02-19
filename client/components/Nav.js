@@ -3,6 +3,8 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import User from './User';
 import Signout from './Signout';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const NavStyled = styled.nav`
 	display: flex;
@@ -69,6 +71,9 @@ const Nav = () => (
 								</li>
 							</>
 						)}
+						<li>
+							<FontAwesomeIcon icon={faShoppingCart} />
+						</li>
 					</ul>
 				</NavStyled>
 			);
