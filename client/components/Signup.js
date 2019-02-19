@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { SignupForm } from './styles/SignupForm';
+import { StyledButton } from './styles/Button';
 
 class Signup extends Component {
 	state = {
@@ -56,8 +57,8 @@ class Signup extends Component {
 								onChange={this.handleChange}
 							/>
 						</label>
-						Toggle Show Password!!
-						<button disabled>Sign Up</button>
+						<StyledButton>Toggle Show Password!!</StyledButton>
+						<StyledButton disabled>Sign Up</StyledButton>
 					</fieldset>
 				</form>
 			</SignupForm>
