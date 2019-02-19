@@ -12,6 +12,7 @@ type Query {
 
 type Mutation {
     signup(email: String!, password: String!, confirmPassword: String!): User!
+    signin(email: String!, password: String!): User!
     signout: ActionMessage
     createItem(
         title: String!

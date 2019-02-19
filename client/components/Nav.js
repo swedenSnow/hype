@@ -35,6 +35,7 @@ const NavStyled = styled.nav`
 const Nav = () => (
 	<User>
 		{({ data: { self } }) => {
+			console.log(self);
 			return (
 				<NavStyled>
 					<ul>
@@ -46,11 +47,6 @@ const Nav = () => (
 						<li>
 							<Link href="/shop">
 								<a>Shop</a>
-							</Link>
-						</li>
-						<li>
-							<Link href="/item">
-								<a>Test Item</a>
 							</Link>
 						</li>
 						{self && (

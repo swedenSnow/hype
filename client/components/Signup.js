@@ -95,8 +95,10 @@ class Signup extends Component {
 											onChange={this.handleChange}
 										/>
 									</label>
-						      <StyledButton>Toggle Show Password!!</StyledButton>
-						      <StyledButton disabled>Sign Up</StyledButton>
+									<StyledButton>
+										Toggle Show Password!!
+									</StyledButton>
+									<StyledButton>Sign Up</StyledButton>
 								</fieldset>
 							</form>
 						</SignupForm>

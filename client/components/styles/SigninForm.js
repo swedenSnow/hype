@@ -14,15 +14,6 @@ const SigninForm = styled.div`
 			width: 100%;
 			border: 1px solid black;
 		}
-
-		button {
-			background-color: #000;
-			color: #fff;
-			border: 0;
-			border-radius: 3px;
-			padding: 0.5rem;
-			float: right;
-		}
 	}
 `;
 
