@@ -32,8 +32,6 @@ const NavStyled = styled.nav`
 	}
 `;
 
-const loggedIn = false;
-
 const Nav = () => (
 	<User>
 		{({ data: { self } }) => {
