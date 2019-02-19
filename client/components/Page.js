@@ -2,15 +2,56 @@ import React, { Component } from 'react';
 import Meta from './Meta';
 import Header from './Header';
 import Footer from './Footer';
-import { createGlobalStyle } from 'styled-components';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+
+const theme = {
+	small: '1rem',
+	root: '1.5rem',
+	medium: '2rem',
+	big: '2.8rem',
+	blue: '#193773',
+	red: '#FF0000',
+	white: '#FFF',
+	offWhite: '#EDEDED',
+	black: '#181717',
+	maxWidthInner: '1100px',
+	boxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
+};
+
+const StyledPage = styled.div`
+	padding-top: 2rem;
+	background: ${props => props.theme.white};
+`;
+
+const Inner = styled.div`
+	max-width: ${props => props.theme.maxWidthInner};
+	margin: 0 auto;
+	padding: 2rem;
+	box-shadow: ${props => props.theme.boxShadow};
+`;
 
 const GlobalStyle = createGlobalStyle`
-  body {
+@import url('https://fonts.googleapis.com/css?family=Raleway|Ubuntu:400,700');
+	html {
+			box-sizing: border-box;
+			font-size: 10px;
+
+		}
+		*, *:before, *:after {
+			box-sizing: inherit;
+		}
+
+	body {
     background-color: ${props => (props.nightMode ? 'black' : 'white')};
     color: ${props => (props.nightMode ? 'white' : 'black')};
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 1.5rem;
+	line-height: 1.5;
+	/* font-family: 'Raleway', sans-serif; */
   }
   a
   {
+	text-decoration: none;
 	color: ${props => (props.nightMode ? 'white' : 'black')};
   }
 `;
@@ -19,11 +60,17 @@ class Page extends Component {
 	render() {
 		return (
 			<div>
-				<Meta />
-				<Header />
-				<GlobalStyle />
-				{this.props.children}
-				<Footer />
+				<ThemeProvider theme={theme}>
+					<>
+						<StyledPage>
+							<Meta />
+							<Header />
+							<GlobalStyle />
+							<Inner>{this.props.children}</Inner>
+							<Footer />
+						</StyledPage>
+					</>
+				</ThemeProvider>
 			</div>
 		);
 	}
