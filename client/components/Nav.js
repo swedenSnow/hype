@@ -7,6 +7,8 @@ import Signout from './Signout';
 const NavStyled = styled.nav`
 	display: flex;
 	align-items: center;
+	font-size: ${props => props.theme.medium};
+	font-family: 'Raleway', sans-serif;
 
 	ul {
 		list-style-type: none;
@@ -14,6 +16,9 @@ const NavStyled = styled.nav`
 			display: inline;
 			padding-right: 1em;
 		}
+	}
+	@media (max-width: 800px) {
+		font-size: ${props => props.theme.root};
 	}
 `;
 

@@ -3,6 +3,7 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { CURRENTUSER_QUERY } from './User';
 import { SignupForm } from './styles/SignupForm';
+import { StyledButton } from './styles/Button';
 
 const SIGNUP_MUTATION = gql`
 	mutation SIGNUP_MUTATION(
@@ -94,8 +95,8 @@ class Signup extends Component {
 											onChange={this.handleChange}
 										/>
 									</label>
-									Toggle Show Password!!
-									<button>Sign Up</button>
+						      <StyledButton>Toggle Show Password!!</StyledButton>
+						      <StyledButton disabled>Sign Up</StyledButton>
 								</fieldset>
 							</form>
 						</SignupForm>
