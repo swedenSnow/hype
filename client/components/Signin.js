@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
+import { Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
 import { SigninForm } from './styles/SigninForm';
+
+const SIGNIN_MUTATION = gql`
+	mutation SIGNIN_MUTATION($email: String!, $password: String!) {
+		signin(email: $email, password: $password) {
+			id
+			email
+			name
+		}
+	}
+`;
 
 class Signin extends Component {
 	state = {

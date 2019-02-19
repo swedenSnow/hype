@@ -1,23 +1,24 @@
+const { forwardTo } = require('prisma-binding');
+
 const Query = {
-    posts: (_, args, context, info) => {
-        return context.prisma.query.posts(
-            {
-                where: {
-                    OR: [
-                        { title_contains: args.searchString },
-                        { content_contains: args.searchString },
-                    ],
-                },
-            },
-            info
-        );
-    },
-    user: (_, args, context, info) => {
+    item: forwardTo('prisma'),
+    user(_, args, context, info) {
         return context.prisma.query.user(
             {
                 where: {
                     id: args.id,
                 },
+            },
+            info
+        );
+    },
+    self(_, args, context, info) {
+        if (!context.request.userId) {
+            return null;
+        }
+        return context.prisma.query.user(
+            {
+                where: { id: context.request.userId },
             },
             info
         );

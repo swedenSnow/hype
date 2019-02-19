@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Order from '../components/Order';
 
-const OrdersPage = () => (
+const OrdersPage = props => (
 	<div>
 		<Head>
 			<title>Hype-gear || Order: #1</title>
