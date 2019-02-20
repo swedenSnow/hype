@@ -4,7 +4,7 @@ import Link from 'next/link';
 import gql from 'graphql-tag';
 import { CURRENTUSER_QUERY } from './User';
 import { SigninForm } from './styles/SigninForm';
-import { StyledButton } from './styles/Button';
+import StyledButton from './styles/StyledButton';
 import ErrorMsg from './ErrorMsg';
 
 const SIGNIN_MUTATION = gql`

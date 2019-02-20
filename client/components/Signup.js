@@ -3,7 +3,7 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { CURRENTUSER_QUERY } from './User';
 import { SignupForm } from './styles/SignupForm';
-import { StyledButton } from './styles/Button';
+import StyledButton from './styles/StyledButton';
 import ErrorMsg from './ErrorMsg';
 
 const SIGNUP_MUTATION = gql`
