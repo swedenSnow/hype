@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { CURRENTUSER_QUERY } from './User';
 import { SignupForm } from './styles/SignupForm';
 import { StyledButton } from './styles/Button';
+import ErrorMsg from './ErrorMsg';
 
 const SIGNUP_MUTATION = gql`
 	mutation SIGNUP_MUTATION(
@@ -50,9 +51,8 @@ class Signup extends Component {
 					if (loading) {
 						return <p>Loading...</p>;
 					}
-					if (error) {
-						return <p>Error: {error.message}</p>;
-					}
+					if (error) return <ErrorMsg error={error} />;
+
 					return (
 						<SignupForm>
 							<form
