@@ -26,7 +26,15 @@ class Item extends Component {
 					{item.description}
 				</p>
 				<p>
-					<img src={item.image} alt={item.title} width="200" />
+					<Link href={{ pathname: '/item', query: { id: item.id } }}>
+						<a>
+							<img
+								src={item.image}
+								alt={item.title}
+								width="200"
+							/>
+						</a>
+					</Link>
 				</p>
 			</div>
 		);

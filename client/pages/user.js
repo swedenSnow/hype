@@ -1,11 +1,12 @@
 import Head from 'next/head';
+import Profile from '../components/Profile';
 
 const AccountPage = props => (
 	<div>
 		<Head>
 			<title>Hype-gear || User Profile </title>
 		</Head>
-		<div>This is a user Profile.</div>
+		<Profile />
 	</div>
 );
 
