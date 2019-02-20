@@ -14,7 +14,7 @@ class Item extends Component {
 				<p>
 					<strong>Title:</strong>
 					<Link href={{ pathname: '/item', query: { id: item.id } }}>
-						{item.title}
+						<a>{item.title}</a>
 					</Link>
 				</p>
 				<p>
