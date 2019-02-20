@@ -21,4 +21,13 @@ type Mutation {
         price: Int!
         image: String!
     ): Item!
+    addToCart(id: ID!): CartItem
+}
+
+type User {
+	id: ID!
+	firstName: String
+	lastName: String
+	email: String!
+	cart:[CartItem!]!
 }
