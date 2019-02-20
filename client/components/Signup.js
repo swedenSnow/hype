@@ -3,7 +3,8 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { CURRENTUSER_QUERY } from './User';
 import { SignupForm } from './styles/SignupForm';
-import { StyledButton } from './styles/Button';
+import StyledButton from './styles/StyledButton';
+import ErrorMsg from './ErrorMsg';
 
 const SIGNUP_MUTATION = gql`
 	mutation SIGNUP_MUTATION(
@@ -50,11 +51,10 @@ class Signup extends Component {
 					if (loading) {
 						return <p>Loading...</p>;
 					}
-					if (error) {
-						return <p>Error: {error.message}</p>;
-					}
+
 					return (
 						<SignupForm>
+							{error && <ErrorMsg error={error} />}
 							<form
 								method="post"
 								onSubmit={async e => {
@@ -71,7 +71,7 @@ class Signup extends Component {
 									<label htmlFor="email">
 										E-mail:
 										<input
-											type="text"
+											type="email"
 											name="email"
 											value={this.state.email}
 											onChange={this.handleChange}

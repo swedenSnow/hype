@@ -2,6 +2,7 @@ const { forwardTo } = require('prisma-binding');
 
 const Query = {
     item: forwardTo('prisma'),
+    items: forwardTo('prisma'),
     user(_, args, context, info) {
         return context.prisma.query.user(
             {

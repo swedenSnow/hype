@@ -8,6 +8,7 @@ type Query {
     user(id: ID!): User
     self: User
     item(where: ItemWhereUniqueInput!): Item
+    items: [Item]!
 }
 
 type Mutation {

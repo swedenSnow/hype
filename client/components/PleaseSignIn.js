@@ -6,7 +6,7 @@ const PleaseSignIn = props => (
 	<Query query={CURRENTUSER_QUERY}>
 		{({ data, loading }) => {
 			if (loading) return <p>Loading...</p>;
-			if (!data.me) {
+			if (!data.self) {
 				return (
 					<div>
 						{props.message && <p>{props.message}</p>}

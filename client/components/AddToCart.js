@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyledButton } from './styles/Button';
+import StyledButton from './styles/StyledButton';
 
 class AddToCart extends Component {
 	addToCart = () => {

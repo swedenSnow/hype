@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import Router from 'next/router';
 import { SellItemForm } from './styles/SellItemForm';
 import PleaseSignIn from './PleaseSignIn';
+import StyledButton from './styles/StyledButton';
 
 const CREATEITEM_MUTATION = gql`
 	mutation CREATEITEM_MUTATION(
@@ -96,7 +97,7 @@ class SellItem extends Component {
 											onChange={this.handleChange}
 										/>
 									</label>
-									<button>Sell Item</button>
+									<StyledButton> Sell Item </StyledButton>
 								</fieldset>
 							</form>
 						</SellItemForm>

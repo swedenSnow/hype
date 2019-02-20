@@ -4,8 +4,6 @@ const FooterStyled = styled.footer`
 	background-color: ${props => props.theme.blue};
 	box-shadow: ${props => props.theme.boxShadow};
 	color: #fff;
-	position: absolute;
-	bottom: 0;
 	width: 100%;
 	height: 5rem;
 	padding: 1rem;
