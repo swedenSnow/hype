@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import AddToCart from './AddToCart';
 
 const ListItem = styled.div`
 	box-shadow: ${props => props.theme.boxShadow};
@@ -55,6 +56,7 @@ class Item extends Component {
 							</a>
 						</Link>
 					</p>
+					<AddToCart id={item.id} />
 				</ListItem>
 			</div>
 		);
