@@ -51,10 +51,10 @@ class Signup extends Component {
 					if (loading) {
 						return <p>Loading...</p>;
 					}
-					if (error) return <ErrorMsg error={error} />;
 
 					return (
 						<SignupForm>
+							{error && <ErrorMsg error={error} />}
 							<form
 								method="post"
 								onSubmit={async e => {
@@ -71,7 +71,7 @@ class Signup extends Component {
 									<label htmlFor="email">
 										E-mail:
 										<input
-											type="text"
+											type="email"
 											name="email"
 											value={this.state.email}
 											onChange={this.handleChange}
