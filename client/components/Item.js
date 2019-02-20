@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const ListItem = styled.div`
 	box-shadow: ${props => props.theme.boxShadow};
 	padding: ${props => props.theme.medium};
+	font-size: ${props => props.theme.medium};
 	p {
 		font-family: 'Raleway', sans-serif;
 	}
@@ -26,7 +27,7 @@ class Item extends Component {
 			<div>
 				<ListItem>
 					<p>
-						<strong>Title:</strong>
+						<strong>Title: </strong>
 						<Link
 							href={{ pathname: '/item', query: { id: item.id } }}
 						>
@@ -34,15 +35,25 @@ class Item extends Component {
 						</Link>
 					</p>
 					<p>
-						<strong>Price:</strong>
+						<strong>Price: </strong>
 						{item.price}
 					</p>
 					<p>
-						<strong>Description:</strong>
+						<strong>Description: </strong>
 						{item.description}
 					</p>
 					<p>
-						<img src={item.image} alt={item.title} width="200" />
+						<Link
+							href={{ pathname: '/item', query: { id: item.id } }}
+						>
+							<a>
+								<img
+									src={item.image}
+									alt={item.title}
+									width="200"
+								/>
+							</a>
+						</Link>
 					</p>
 				</ListItem>
 			</div>
