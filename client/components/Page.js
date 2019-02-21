@@ -10,6 +10,7 @@ const theme = {
 	medium: '2rem',
 	big: '2.8rem',
 	blue: '#193773',
+	lightBlue: '#4080ff',
 	red: '#FF0000',
 	white: '#FFF',
 	offWhite: '#EDEDED',

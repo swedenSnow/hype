@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const SigninForm = styled.div`
 	width: 25%;
 	form {
-		padding: 1rem;
+		padding: 2rem;
 		label {
 			display: block;
 			margin-bottom: 0.5rem;
@@ -14,6 +14,9 @@ const SigninForm = styled.div`
 			width: 100%;
 			border: 1px solid black;
 		}
+	}
+	div {
+		padding: 2rem;
 	}
 `;
 
