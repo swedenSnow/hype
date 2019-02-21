@@ -6,6 +6,7 @@ import { CURRENTUSER_QUERY } from './User';
 import { SigninForm } from './styles/SigninForm';
 import StyledButton from './styles/StyledButton';
 import ErrorMsg from './ErrorMsg';
+import Form from './styles/Form';
 
 const SIGNIN_MUTATION = gql`
 	mutation SIGNIN_MUTATION($email: String!, $password: String!) {
@@ -43,7 +44,7 @@ class Signin extends Component {
 						<div>
 							<SigninForm>
 								{error && <ErrorMsg error={error} />}
-								<form
+								<Form
 									method="post"
 									onSubmit={async e => {
 										e.preventDefault();
@@ -75,16 +76,16 @@ class Signin extends Component {
 										</label>
 										<StyledButton>Sign In</StyledButton>
 									</fieldset>
-								</form>
+								</Form>
+								<div>
+									<Link href="/forgotpassword">
+										<a>
+											Click here if you have forgotten
+											your password.
+										</a>
+									</Link>
+								</div>
 							</SigninForm>
-							<div>
-								<Link href="/forgotpassword">
-									<a>
-										Click here if you have forgotten your
-										password.
-									</a>
-								</Link>
-							</div>
 						</div>
 					);
 				}}
