@@ -21,7 +21,7 @@ const ErrorStyles = styled.div`
 const ErrorMsg = ({ error }) => (
 	<ErrorStyles>
 		<p>
-			<strong>OH NO YOU FUCKED UP!</strong>
+			<strong>Something went wrong!</strong>
 			{error.message.replace('GraphQL error: ', '')}
 		</p>
 	</ErrorStyles>
