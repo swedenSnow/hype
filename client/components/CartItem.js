@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import RemoveFromCart from './RemoveFromCart';
+
 const CartItemStyles = styled.li`
 	padding: 1rem 0;
 	border-bottom: 1px solid ${props => props.theme.offWhite};
@@ -29,6 +31,7 @@ const CartItem = ({ cartItem }) => (
 				</strong>
 			</p>
 		</div>
+		<RemoveFromCart id={cartItem.id} />
 	</CartItemStyles>
 );
 
