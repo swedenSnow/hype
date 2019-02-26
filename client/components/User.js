@@ -8,6 +8,20 @@ const CURRENTUSER_QUERY = gql`
 			id
 			email
 			firstName
+			cart {
+				id
+				quantity
+				item {
+					id
+					price
+					image
+					description
+					user {
+						firstName
+						email
+					}
+				}
+			}
 		}
 	}
 `;
