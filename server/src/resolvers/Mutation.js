@@ -104,6 +104,30 @@ const Mutations = {
             info
         );
     },
+    async removeFromCart(parent, args, context, info) {
+        const cartItem = await context.prisma.query.cartItem(
+            {
+                where: {
+                    id: args.id,
+                },
+            },
+            `{ id, user {id}}`
+        );
+        if (!cartItem) {
+            throw new Error('No Cart item found');
+        }
+        if (cartItem.user.id !== context.request.userId) {
+            throw new Error('You dont own this');
+        }
+        return context.prisma.mutation.deleteCartItem(
+            {
+                where: {
+                    id: args.id,
+                },
+            },
+            info
+        );
+    },
 };
 
 module.exports = Mutations;
