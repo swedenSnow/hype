@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import User from './User';
-import Signout from './Signout';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+import User from './User';
+import Signout from './Signout';
+import CartCount from './CartCount';
 
 const NavStyled = styled.nav`
 	display: flex;
@@ -85,15 +86,25 @@ const Nav = () => (
 							</>
 						)}
 						{
-							<li>
-								<Link href="/cart">
-									<a>
-										<FontAwesomeIcon
-											icon={faShoppingCart}
-										/>
-									</a>
-								</Link>
-							</li>
+							<>
+								<li>
+									<Link href="/cart">
+										<a>
+											<FontAwesomeIcon
+												icon={faShoppingCart}
+											/>
+											<CartCount
+												count={self.cart.reduce(
+													(tally, cartItem) =>
+														tally +
+														cartItem.quantity,
+													0
+												)}
+											/>
+										</a>
+									</Link>
+								</li>
+							</>
 						}
 					</ul>
 				</NavStyled>
