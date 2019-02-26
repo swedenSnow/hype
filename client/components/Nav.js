@@ -3,6 +3,8 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import User from './User';
 import Signout from './Signout';
+import FAQ from './FAQ';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
@@ -47,6 +49,11 @@ const Nav = () => (
 						<li>
 							<Link href="/shop">
 								<a>Shop</a>
+							</Link>
+						</li>
+						<li>
+							<Link href="/faq">
+								<a>FAQ</a>
 							</Link>
 						</li>
 						{self && (
