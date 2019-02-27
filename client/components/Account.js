@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Link from 'next/link';
 import PleaseSignIn from './PleaseSignIn';
+import ErrorMsg from './ErrorMsg';
 
 const USERINFO_QUERY = gql`
 	query {
@@ -21,26 +22,31 @@ class Account extends Component {
 			<PleaseSignIn message="Please sign in to view your account.">
 				<Query query={USERINFO_QUERY}>
 					{({ data, loading, error }) => {
+						if (loading) return <p>Loading...</p>;
+						if (error) return <ErrorMsg error={error} />;
 						console.log(data);
-						return (
-							<div>
-								<strong>E-mail:</strong> {data.self.email}
-								<br />
-								<strong>First name:</strong>
-								{data.self.firstName} <br />
-								<strong>Last name:</strong> {data.self.lastName}
-								<br />
-								<strong>Password:</strong> ilikepenises <br />
-								<hr />
-								<Link href="/orders">
-									<a>My Orders</a>
-								</Link>
-								Update Details
-								<br />
-								Change Password
-								<br />
-							</div>
-						);
+						if (data.self)
+							return (
+								<div>
+									<strong>E-mail:</strong> {data.self.email}
+									<br />
+									<strong>First name:</strong>
+									{data.self.firstName} <br />
+									<strong>Last name:</strong>{' '}
+									{data.self.lastName}
+									<br />
+									<strong>Password:</strong> ilikepenises{' '}
+									<br />
+									<hr />
+									<Link href="/orders">
+										<a>My Orders</a>
+									</Link>
+									Update Details
+									<br />
+									Change Password
+									<br />
+								</div>
+							);
 					}}
 				</Query>
 			</PleaseSignIn>

@@ -69,6 +69,13 @@ const Nav = () => (
 									</Link>
 								</li>
 								<Signout />
+								<CartCount
+									count={self.cart.reduce(
+										(tally, cartItem) =>
+											tally + cartItem.quantity,
+										0
+									)}
+								/>
 							</>
 						)}
 						{!self && (
@@ -92,14 +99,6 @@ const Nav = () => (
 										<a>
 											<FontAwesomeIcon
 												icon={faShoppingCart}
-											/>
-											<CartCount
-												count={self.cart.reduce(
-													(tally, cartItem) =>
-														tally +
-														cartItem.quantity,
-													0
-												)}
 											/>
 										</a>
 									</Link>
