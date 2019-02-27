@@ -3,6 +3,7 @@ import StyledButton from './styles/StyledButton';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { CURRENTUSER_QUERY } from './User';
+import ErrorMsg from './ErrorMsg';
 
 const ADD_TO_CART_MUTATION = gql`
 	mutation addToCart($id: ID!) {
@@ -14,10 +15,6 @@ const ADD_TO_CART_MUTATION = gql`
 	}
 `;
 class AddToCart extends Component {
-	addToCart = () => {
-		alert('One day this will work?');
-	};
-
 	render() {
 		const { id } = this.props;
 		return (
@@ -28,11 +25,14 @@ class AddToCart extends Component {
 				}}
 				refetchQueries={[{ query: CURRENTUSER_QUERY }]}
 			>
-				{(addToCart, { loading }) => (
-					<StyledButton disabled={loading} onClick={addToCart}>
-						Add{loading && 'ing'} To Cart
-					</StyledButton>
-				)}
+				{(addToCart, { loading, error }) => {
+					if (error) return <ErrorMsg error={error} />;
+					return (
+						<StyledButton disabled={loading} onClick={addToCart}>
+							Add{loading && 'ing'} To Cart
+						</StyledButton>
+					);
+				}}
 			</Mutation>
 		);
 	}
