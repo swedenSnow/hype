@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import Link from 'next/link';
 
 import CloseButton from './styles/CloseButton';
 import StyledButton from './styles/StyledButton';
@@ -13,7 +14,18 @@ class Cart extends Component {
 		return (
 			<User>
 				{({ data: { self, cart } }) => {
-					if (!self) return null;
+					if (!self)
+						return (
+							<>
+								<p>
+									You need to be logged in in to view this
+									page
+								</p>
+								<Link href="/signin">
+									<a>Go to Login Page</a>
+								</Link>
+							</>
+						);
 
 					console.log(self);
 					return (
@@ -33,12 +45,6 @@ class Cart extends Component {
 										your cart.`}
 							</p>
 							<div>
-								{/* <div>
-									<p>Item #1</p>
-									<p>$9.99</p>
-									<p>x2</p>
-									<p>$19.98</p>
-								</div> */}
 								<ul>
 									{self.cart.map(cartItem => (
 										<CartItem

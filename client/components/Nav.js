@@ -71,8 +71,8 @@ const Nav = () => (
 								<Signout />
 								<CartCount
 									count={self.cart.reduce(
-										(tally, cartItem) =>
-											tally + cartItem.quantity,
+										(total, cartItem) =>
+											total + cartItem.quantity,
 										0
 									)}
 								/>
