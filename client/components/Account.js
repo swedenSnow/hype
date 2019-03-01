@@ -25,7 +25,8 @@ class Account extends Component {
 						if (loading) return <p>Loading...</p>;
 						if (error) return <ErrorMsg error={error} />;
 						console.log(data);
-						if (data.self)
+						console.log('penis');
+						if (data.self) {
 							return (
 								<div>
 									<strong>E-mail:</strong> {data.self.email}
@@ -47,6 +48,9 @@ class Account extends Component {
 									<br />
 								</div>
 							);
+						} else {
+							return <p>Nothing to see here</p>;
+						}
 					}}
 				</Query>
 			</PleaseSignIn>
