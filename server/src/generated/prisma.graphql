@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/hype/hype-gear/dev
-# timestamp: Wed Feb 20 2019 15:27:38 GMT+0100 (GMT+01:00)
+# timestamp: Fri Mar 01 2019 16:09:42 GMT+0100 (Västeuropa, normaltid)
 
 type AggregateCartItem {
   count: Int!
@@ -732,11 +732,15 @@ type Subscription {
 
 type User implements Node {
   id: ID!
+  userName: String
   firstName: String
   lastName: String
   email: String!
   password: String!
   cart(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem!]
+  resetToken: String
+  resetTokenExpiry: Float
+  userLevel: UserLevel
 }
 
 """A connection to a list of items."""
@@ -750,10 +754,14 @@ type UserConnection {
 }
 
 input UserCreateInput {
+  userName: String
   firstName: String
   lastName: String
   email: String!
   password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  userLevel: UserLevel
   cart: CartItemCreateManyWithoutUserInput
 }
 
@@ -768,10 +776,14 @@ input UserCreateOneWithoutCartInput {
 }
 
 input UserCreateWithoutCartInput {
+  userName: String
   firstName: String
   lastName: String
   email: String!
   password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  userLevel: UserLevel
 }
 
 """An edge in a connection."""
@@ -783,9 +795,16 @@ type UserEdge {
   cursor: String!
 }
 
+enum UserLevel {
+  ADMIN
+  USER
+}
+
 enum UserOrderByInput {
   id_ASC
   id_DESC
+  userName_ASC
+  userName_DESC
   firstName_ASC
   firstName_DESC
   lastName_ASC
@@ -794,6 +813,12 @@ enum UserOrderByInput {
   email_DESC
   password_ASC
   password_DESC
+  resetToken_ASC
+  resetToken_DESC
+  resetTokenExpiry_ASC
+  resetTokenExpiry_DESC
+  userLevel_ASC
+  userLevel_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -802,10 +827,14 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
+  userName: String
   firstName: String
   lastName: String
   email: String!
   password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  userLevel: UserLevel
 }
 
 type UserSubscriptionPayload {
@@ -848,26 +877,38 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
+  userName: String
   firstName: String
   lastName: String
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: Float
+  userLevel: UserLevel
   cart: CartItemUpdateManyWithoutUserInput
 }
 
 input UserUpdateInput {
+  userName: String
   firstName: String
   lastName: String
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: Float
+  userLevel: UserLevel
   cart: CartItemUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
+  userName: String
   firstName: String
   lastName: String
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: Float
+  userLevel: UserLevel
 }
 
 input UserUpdateOneRequiredInput {
@@ -885,10 +926,14 @@ input UserUpdateOneRequiredWithoutCartInput {
 }
 
 input UserUpdateWithoutCartDataInput {
+  userName: String
   firstName: String
   lastName: String
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: Float
+  userLevel: UserLevel
 }
 
 input UserUpsertNestedInput {
@@ -950,6 +995,46 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  userName: String
+
+  """All values that are not equal to given value."""
+  userName_not: String
+
+  """All values that are contained in given list."""
+  userName_in: [String!]
+
+  """All values that are not contained in given list."""
+  userName_not_in: [String!]
+
+  """All values less than the given value."""
+  userName_lt: String
+
+  """All values less than or equal the given value."""
+  userName_lte: String
+
+  """All values greater than the given value."""
+  userName_gt: String
+
+  """All values greater than or equal the given value."""
+  userName_gte: String
+
+  """All values containing the given string."""
+  userName_contains: String
+
+  """All values not containing the given string."""
+  userName_not_contains: String
+
+  """All values starting with the given string."""
+  userName_starts_with: String
+
+  """All values not starting with the given string."""
+  userName_not_starts_with: String
+
+  """All values ending with the given string."""
+  userName_ends_with: String
+
+  """All values not ending with the given string."""
+  userName_not_ends_with: String
   firstName: String
 
   """All values that are not equal to given value."""
@@ -1110,6 +1195,78 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   password_not_ends_with: String
+  resetToken: String
+
+  """All values that are not equal to given value."""
+  resetToken_not: String
+
+  """All values that are contained in given list."""
+  resetToken_in: [String!]
+
+  """All values that are not contained in given list."""
+  resetToken_not_in: [String!]
+
+  """All values less than the given value."""
+  resetToken_lt: String
+
+  """All values less than or equal the given value."""
+  resetToken_lte: String
+
+  """All values greater than the given value."""
+  resetToken_gt: String
+
+  """All values greater than or equal the given value."""
+  resetToken_gte: String
+
+  """All values containing the given string."""
+  resetToken_contains: String
+
+  """All values not containing the given string."""
+  resetToken_not_contains: String
+
+  """All values starting with the given string."""
+  resetToken_starts_with: String
+
+  """All values not starting with the given string."""
+  resetToken_not_starts_with: String
+
+  """All values ending with the given string."""
+  resetToken_ends_with: String
+
+  """All values not ending with the given string."""
+  resetToken_not_ends_with: String
+  resetTokenExpiry: Float
+
+  """All values that are not equal to given value."""
+  resetTokenExpiry_not: Float
+
+  """All values that are contained in given list."""
+  resetTokenExpiry_in: [Float!]
+
+  """All values that are not contained in given list."""
+  resetTokenExpiry_not_in: [Float!]
+
+  """All values less than the given value."""
+  resetTokenExpiry_lt: Float
+
+  """All values less than or equal the given value."""
+  resetTokenExpiry_lte: Float
+
+  """All values greater than the given value."""
+  resetTokenExpiry_gt: Float
+
+  """All values greater than or equal the given value."""
+  resetTokenExpiry_gte: Float
+  userLevel: UserLevel
+
+  """All values that are not equal to given value."""
+  userLevel_not: UserLevel
+
+  """All values that are contained in given list."""
+  userLevel_in: [UserLevel!]
+
+  """All values that are not contained in given list."""
+  userLevel_not_in: [UserLevel!]
   cart_every: CartItemWhereInput
   cart_some: CartItemWhereInput
   cart_none: CartItemWhereInput

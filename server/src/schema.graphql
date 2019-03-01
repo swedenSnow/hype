@@ -23,6 +23,8 @@ type Mutation {
     ): Item!
     addToCart(id: ID!): CartItem
     removeFromCart(id: ID!): CartItem
+    requestReset(email: String!): ActionMessage
+    resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
 }
 
 type User {

@@ -1,10 +1,19 @@
+enum UserLevel {
+    ADMIN
+    USER
+}
+
 type User {
     id: ID! @unique
+    userName: String
     firstName: String
     lastName: String
     email: String! @unique
     password: String!
     cart: [CartItem!]!
+    resetToken: String
+    resetTokenExpiry: Float
+    userLevel: UserLevel
 }
 
 type Item {
