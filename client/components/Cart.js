@@ -27,13 +27,10 @@ class Cart extends Component {
 								{self.cart.length === 0 && (
 									<p>Your cart is currently empty</p>
 								)}
-								{self.cart.length > 0 && (
-									<p>
-										You have {self.cart.length} item
-										{self.cart.length === 1 ? '' : 's'} in
-										your cart.
-									</p>
-								)}
+								{self.cart.length > 0 &&
+									`You have ${self.cart.length} item
+										${self.cart.length === 1 ? '' : 's'} in
+										your cart.`}
 							</p>
 							<div>
 								{/* <div>
