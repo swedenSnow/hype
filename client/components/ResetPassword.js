@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
+import Router from 'next/router';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 import { CURRENTUSER_QUERY } from './User';
 import ErrorMsg from './ErrorMsg';
+import StyledButton from './styles/StyledButton';
 
 const RESET_MUTATION = gql`
 	mutation RESET_MUTATION(
@@ -39,7 +41,6 @@ class ResetPassword extends Component {
 	};
 
 	render() {
-		console.log(this.props.resetToken);
 		return (
 			<Mutation
 				mutation={RESET_MUTATION}
@@ -51,6 +52,11 @@ class ResetPassword extends Component {
 				refetchQueries={[{ query: CURRENTUSER_QUERY }]}
 			>
 				{(reset, { error, loading, called }) => {
+					if (!error && !loading && called) {
+						Router.push({
+							pathname: '/account',
+						});
+					}
 					return (
 						<div>
 							<form
@@ -84,7 +90,7 @@ class ResetPassword extends Component {
 											onChange={this.handleChange}
 										/>
 									</label>
-									<button>Reset password</button>
+									<StyledButton>Reset password</StyledButton>
 								</fieldset>
 							</form>
 						</div>

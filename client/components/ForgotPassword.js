@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import ErrorMsg from './ErrorMsg';
+import StyledButton from './styles/StyledButton';
 
 const REQUESTRESET_MUTATION = gql`
 	mutation REQUESTRESET_MUTATION($email: String!) {
@@ -55,7 +56,9 @@ class ForgotPassword extends Component {
 											onChange={this.handleChange}
 										/>
 									</label>
-									<button>Get password reset link</button>
+									<StyledButton>
+										Get password reset link
+									</StyledButton>
 								</fieldset>
 							</form>
 						</div>
