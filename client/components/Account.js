@@ -24,8 +24,6 @@ class Account extends Component {
 					{({ data, loading, error }) => {
 						if (loading) return <p>Loading...</p>;
 						if (error) return <ErrorMsg error={error} />;
-						console.log(data);
-						console.log('penis');
 						if (data.self) {
 							return (
 								<div>
