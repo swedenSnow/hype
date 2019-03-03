@@ -81,10 +81,6 @@ class Item extends Component {
 							{formatMoney(item.price)}
 						</p>
 						<p>
-							<strong>Description: </strong>
-							{item.description}
-						</p>
-						<p>
 							<Link
 								href={{
 									pathname: '/item',
