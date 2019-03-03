@@ -19,6 +19,7 @@ const ALLITEMS_QUERY = gql`
 			price
 			description
 			image
+			sold
 		}
 	}
 `;
@@ -29,7 +30,6 @@ class Items extends Component {
 			<Query query={ALLITEMS_QUERY}>
 				{({ data, loading, error }) => {
 					const items = data.items;
-					console.log(data);
 					return (
 						<div>
 							<ListItemsTitle>

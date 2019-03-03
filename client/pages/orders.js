@@ -7,7 +7,6 @@ const OrdersPage = props => (
 			<title>Hype-gear || My Orders</title>
 		</Head>
 		<div>
-			<p>Show orders here...</p>
 			<Orders />
 		</div>
 	</div>

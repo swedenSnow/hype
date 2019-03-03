@@ -6,7 +6,6 @@ const ItemPage = props => (
 		<Head>
 			<title>Hype-gear || Item name</title>
 		</Head>
-		<div>Show an item here</div>
 		<SingleItem id={props.query.id} />
 	</div>
 );

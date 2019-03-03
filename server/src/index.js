@@ -40,7 +40,7 @@ server.express.use(async (req, _, next) => {
     if (!req.userId) return next();
     const user = await prisma.query.user(
         { where: { id: req.userId } },
-        '{ id, email, firstName}'
+        '{ id, email, userLevel}'
     );
     req.user = user;
     next();

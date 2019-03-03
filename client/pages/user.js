@@ -6,7 +6,7 @@ const AccountPage = props => (
 		<Head>
 			<title>Hype-gear || User Profile </title>
 		</Head>
-		<Profile />
+		<Profile id={props.query.id} />
 	</div>
 );
 

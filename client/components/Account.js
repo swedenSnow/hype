@@ -9,6 +9,7 @@ const USERINFO_QUERY = gql`
 		self {
 			id
 			email
+			userName
 			firstName
 			lastName
 		}
@@ -21,21 +22,37 @@ class Account extends Component {
 			<PleaseSignIn message="Please sign in to view your account.">
 				<Query query={USERINFO_QUERY}>
 					{({ data, loading, error }) => {
-						console.log(data);
 						return (
 							<div>
-								<strong>E-mail:</strong> {data.self.email}
+								<strong>E-mail: </strong>
+								<a href={`mailto:${data.self.email}`}>
+									{data.self.email}
+								</a>
 								<br />
-								<strong>First name:</strong>
-								{data.self.firstName} <br />
-								<strong>Last name:</strong> {data.self.lastName}
+								<strong>Username: </strong>
+								{data.self.userName} <br />
+								<strong>Mame: </strong>
+								{data.self.firstName + ' ' + data.self.lastName}
 								<br />
-								<strong>Password:</strong> ilikepenises <br />
+								<strong>Address: </strong>
+								<br />
+								<strong>Postal Code: </strong>
+								<br />
+								<strong>City: </strong>
+								<br />
 								<hr />
 								<Link href="/orders">
 									<a>My Orders</a>
 								</Link>
-								Update Details
+								<br />
+								<Link
+									href={{
+										pathname: '/account',
+										query: { action: 'edit' },
+									}}
+								>
+									<a>Update Details</a>
+								</Link>
 								<br />
 								Change Password
 								<br />

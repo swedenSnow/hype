@@ -9,8 +9,12 @@ import ErrorMsg from './ErrorMsg';
 import Form from './styles/Form';
 
 const SIGNIN_MUTATION = gql`
-	mutation SIGNIN_MUTATION($email: String!, $password: String!) {
-		signin(email: $email, password: $password) {
+	mutation SIGNIN_MUTATION(
+		$userName: String!
+		$email: String!
+		$password: String!
+	) {
+		signin(userName: $userName, email: $email, password: $password) {
 			id
 			email
 			firstName
@@ -56,6 +60,15 @@ class Signin extends Component {
 									}}
 								>
 									<fieldset>
+										<label htmlFor="userName">
+											Username:
+											<input
+												type="text"
+												name="userName"
+												value={this.state.userName}
+												onChange={this.handleChange}
+											/>
+										</label>
 										<label htmlFor="email">
 											E-mail:
 											<input

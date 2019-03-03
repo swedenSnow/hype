@@ -72,6 +72,37 @@ const Mutations = {
 
         return item;
     },
+    updateItem(parent, args, context, info) {
+        const updates = { ...args };
+        delete updates.id;
+        return context.prisma.mutation.updateItem(
+            {
+                data: updates,
+                where: {
+                    id: args.id,
+                },
+            },
+            info
+        );
+    },
+    async deleteItem(parent, args, context, info) {
+        const where = { id: args.id };
+        const item = await context.prisma.query.item(
+            { where },
+            `{ id title user { id } }`
+        );
+        const ownsItem = item.user.id === context.request.userId;
+
+        //ToDo: Add Admin Check here
+
+        if (!ownsItem) {
+            throw new Error("You don't have permissions to do that");
+        }
+
+        await context.prisma.mutation.deleteItem({ where }, info);
+
+        return { message: 'Item deleted.' };
+    },
     async addToCart(parent, args, context, info) {
         const { userId } = context.request;
         if (!userId) {
@@ -103,6 +134,15 @@ const Mutations = {
             },
             info
         );
+    },
+    async createOrder(parent, args, context, info) {
+        throw new Error('This needs to be implemented!');
+        const { userId } = context.request;
+        if (!userId) {
+            throw new Error('You must be logged in to complete this order!');
+        }
+
+        return;
     },
 };
 

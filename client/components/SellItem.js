@@ -5,6 +5,7 @@ import Router from 'next/router';
 import { SellItemForm } from './styles/SellItemForm';
 import PleaseSignIn from './PleaseSignIn';
 import StyledButton from './styles/StyledButton';
+import { withRouter } from 'next/router';
 
 const CREATEITEM_MUTATION = gql`
 	mutation CREATEITEM_MUTATION(
@@ -38,6 +39,36 @@ class SellItem extends Component {
 		this.setState({ [name]: val });
 	};
 
+	uploadFile = async e => {
+		const files = e.target.files;
+		const data = new FormData();
+
+		if (files.length === 0) {
+			console.log('no file selected');
+			return;
+		}
+
+		data.append('file', files[0]);
+		data.append('upload_preset', 'hypegear');
+
+		const res = await fetch(
+			'https://api.cloudinary.com/v1_1/indiehjaerta/image/upload',
+			{
+				method: 'POST',
+				body: data,
+			}
+		);
+
+		const file = await res.json();
+		console.log(file);
+
+		if (file !== undefined) {
+			this.setState({
+				image: file.secure_url,
+			});
+		}
+	};
+
 	render() {
 		return (
 			<PleaseSignIn message="Please sign in to be able to sell an item.">
@@ -49,7 +80,6 @@ class SellItem extends Component {
 								onSubmit={async e => {
 									e.preventDefault();
 									const res = await createItem();
-
 									Router.push({
 										pathname: '/item',
 										query: { id: res.data.createItem.id },
@@ -79,11 +109,18 @@ class SellItem extends Component {
 									<label htmlFor="image">
 										Image:
 										<input
-											type="text"
+											type="file"
 											name="image"
-											value={this.state.image}
-											onChange={this.handleChange}
+											placeholder="Upload an Image"
+											onChange={this.uploadFile}
 										/>
+										{this.state.image && (
+											<img
+												src={this.state.image}
+												alt="Upload preview"
+												width="200px"
+											/>
+										)}
 										"Välj fil"-knappen på höger sida plz -
 										<a href="https://stackoverflow.com/questions/18917710/how-do-i-position-the-file-input-button-on-the-right-hand-side-inside-the-textfi">
 											Fix it
@@ -108,4 +145,4 @@ class SellItem extends Component {
 	}
 }
 
-export default SellItem;
+export default withRouter(SellItem);

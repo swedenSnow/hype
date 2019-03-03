@@ -14,6 +14,9 @@ const StyledButton = styled.button`
 	&[disabled] {
 		opacity: 0.5;
 	}
+	a {
+		color: ${props => props.theme.white};
+	}
 `;
 
 export default StyledButton;
