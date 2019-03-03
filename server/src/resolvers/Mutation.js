@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const stripe = require('../stripe');
 
 const Mutations = {
     async signup(_, args, context, info) {
@@ -127,6 +128,63 @@ const Mutations = {
             },
             info
         );
+    },
+    async createOrder(parent, args, context, info) {
+        const { userId } = context.request;
+        if (!userId)
+            throw new Error('You must be signed in to complete the order!');
+        const user = await context.prisma.query.user(
+            { where: { id: userId } },
+            `{
+            id 
+            firstName 
+            lastName
+            email 
+            cart { 
+                id 
+                quantity 
+                item {title price id description image
+                }
+            }
+        }`
+        );
+        //! Recalculate the total for the price(Server side, so they cant go in and edit the price in javascript to 0.01;-)
+        const amount = user.cart.reduce(
+            (total, cartItem) =>
+                total + cartItem.item.price * cartItem.quantity,
+            0
+        );
+        console.log(`Going to charge for a total of ${amount}`);
+        const charge = await stripe.charges.create({
+            amount,
+            currency: 'EUR',
+            source: args.token,
+            description: 'Hype-gear items',
+        });
+        const orderItems = user.cart.map(cartItem => {
+            const orderItem = {
+                ...cartItem.item,
+                quantity: cartItem.quantity,
+                user: { connect: { id: userId } },
+            };
+            delete orderItem.id;
+            return orderItem;
+        });
+        const order = await context.prisma.mutation
+            .createOrder({
+                data: {
+                    total: charge.amount,
+                    charge: charge.id,
+                    items: { create: orderItems },
+                    user: { connect: { id: userId } },
+                },
+            })
+            .catch(err => console.log(err.message));
+        const cartItemIds = user.cart.map(cartItem => cartItem.id);
+        await context.prisma.mutation.deleteManyCartItems({
+            where: { id_in: cartItemIds },
+        });
+        return order;
     },
 };
 
