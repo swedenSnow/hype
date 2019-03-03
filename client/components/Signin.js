@@ -41,13 +41,13 @@ class Signin extends Component {
 				variables={this.state}
 				refetchQueries={[{ query: CURRENTUSER_QUERY }]}
 			>
-				{(signin, { error, loading }) => {
-					if (loading) return <p>Loading...</p>;
+				{(signin, { error, loading }) => 
+					// if (loading) return <p>Loading...</p>;
 
-					return (
+					 (
 						<div>
+							{error && <ErrorMsg error={error} />}
 							<SigninForm>
-								{error && <ErrorMsg error={error} />}
 								<Form
 									method="post"
 									onSubmit={async e => {
@@ -100,8 +100,8 @@ class Signin extends Component {
 								</div>
 							</SigninForm>
 						</div>
-					);
-				}}
+					)
+				}
 			</Mutation>
 		);
 	}

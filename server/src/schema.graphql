@@ -27,7 +27,13 @@ type Mutation {
     updateItem(id: ID!, title: String, description: String, price: Int): Item!
     deleteItem(id: ID!): ActionMessage
     addToCart(id: ID!): CartItem
-    createOrder: Order!
+    removeFromCart(id: ID!): CartItem
+    requestReset(email: String!): ActionMessage
+    resetPassword(
+        resetToken: String!
+        password: String!
+        confirmPassword: String!
+    ): User!
 }
 
 type User {

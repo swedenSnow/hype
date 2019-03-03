@@ -13,10 +13,14 @@ const CURRENTUSER_QUERY = gql`
 				quantity
 				item {
 					id
+					title
 					price
 					image
-					title
 					description
+					user {
+						firstName
+						email
+					}
 				}
 			}
 		}

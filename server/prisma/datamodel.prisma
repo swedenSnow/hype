@@ -10,11 +10,10 @@ type User {
     lastName: String
     email: String! @unique
     password: String!
-    address: String
-    postalCode: String
-    city: String
     cart: [CartItem!]!
-    userLevel: UserLevel @default(value: USER)
+    userLevel: UserLevel
+    resetToken: String
+    resetTokenExpiry: Float
 }
 
 type Item {
@@ -24,8 +23,8 @@ type Item {
     image: String!
     price: Int!
     user: User!
-    sold: Boolean! @default(value: false)
-    approved: Boolean! @default(value: false)
+    sold: Boolean @default(value: false)
+    approved: Boolean @default(value: false)
 }
 
 type CartItem {

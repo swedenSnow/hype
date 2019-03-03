@@ -1,10 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import User from './User';
-import Signout from './Signout';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+import User from './User';
+import Signout from './Signout';
+import CartCount from './CartCount';
 
 const NavStyled = styled.nav`
 	display: flex;
@@ -49,6 +51,11 @@ const Nav = () => (
 								<a>Shop</a>
 							</Link>
 						</li>
+						<li>
+							<Link href="/faq">
+								<a>FAQ</a>
+							</Link>
+						</li>
 						{self && (
 							<>
 								<li>
@@ -62,6 +69,13 @@ const Nav = () => (
 									</Link>
 								</li>
 								<Signout />
+								<CartCount
+									count={self.cart.reduce(
+										(total, cartItem) =>
+											total + cartItem.quantity,
+										0
+									)}
+								/>
 							</>
 						)}
 						{!self && (
@@ -78,9 +92,19 @@ const Nav = () => (
 								</li>
 							</>
 						)}
-						<li>
-							<FontAwesomeIcon icon={faShoppingCart} />
-						</li>
+						{
+							<>
+								<li>
+									<Link href="/cart">
+										<a>
+											<FontAwesomeIcon
+												icon={faShoppingCart}
+											/>
+										</a>
+									</Link>
+								</li>
+							</>
+						}
 					</ul>
 				</NavStyled>
 			);
