@@ -105,7 +105,7 @@ class SingleItem extends Component {
 											<strong>Out of stock.</strong>
 										)}
 
-										{self.id === item.user.id && (
+										{self && self.id === item.user.id && (
 											<>
 												<hr />
 												<ItemActions>

@@ -19,6 +19,50 @@ const NavStyled = styled.nav`
 		li {
 			display: inline;
 			padding-right: 1em;
+
+			a {
+				display: inline-block;
+				text-decoration: none;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+				position: relative;
+				-webkit-transition: all 0.4s ease;
+				transition: all 0.4s ease;
+				padding: 0 1rem;
+
+				&:after {
+					content: '';
+					position: absolute;
+					height: 2px;
+					background-color: #193773;
+					width: 0;
+					left: 50%;
+					bottom: 0;
+					-webkit-transform: translateX(-50%);
+					-ms-transform: translateX(-50%);
+					transform: translateX(-50%);
+					-webkit-transition: 0.5s
+						cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+					transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+				}
+
+				&:hover {
+					color: #193773;
+
+					&:after {
+						width: 100%;
+					}
+				}
+			}
+
+			&.cart {
+				color: #193773;
+				a {
+					&:after {
+						content: none;
+					}
+				}
+			}
 		}
 	}
 
@@ -37,7 +81,6 @@ const NavStyled = styled.nav`
 const Nav = () => (
 	<User>
 		{({ data: { self } }) => {
-			console.log(self);
 			return (
 				<NavStyled>
 					<ul>
@@ -94,7 +137,7 @@ const Nav = () => (
 						)}
 						{
 							<>
-								<li>
+								<li className="cart">
 									<Link href="/cart">
 										<a>
 											<FontAwesomeIcon

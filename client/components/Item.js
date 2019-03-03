@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import AddToCart from './AddToCart';
 import formatMoney from '../lib/formatMoney';
+import StyledButton from './styles/StyledButton';
 
 const ListItem = styled.div`
 	box-shadow: ${props => props.theme.boxShadow};
@@ -23,11 +24,14 @@ const ListItem = styled.div`
 
 	.image {
 		flex-grow: 1;
+		display: flex;
+		align-items: center;
 	}
 
 	.item {
 		display: flex;
 		flex-direction: column;
+		text-align: center;
 	}
 
 	.sold {
@@ -104,7 +108,11 @@ class Item extends Component {
 						</Link>
 					</p>
 					<p>{formatMoney(item.price)}</p>
-					{!item.sold && <AddToCart id={item.id} />}
+					{!item.sold ? (
+						<AddToCart id={item.id} />
+					) : (
+						<StyledButton disabled>Sold</StyledButton>
+					)}
 				</div>
 			</ListItem>
 		);
