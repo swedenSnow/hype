@@ -11,6 +11,11 @@ const ListItemsTitle = styled.div`
 	font-family: 'Ubuntu', sans-serif;
 `;
 
+const ListItem = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+`;
+
 const ALLITEMS_QUERY = gql`
 	query ALLITEMS_QUERY {
 		items {
@@ -35,9 +40,11 @@ class Items extends Component {
 							<ListItemsTitle>
 								<h2>All items for sale</h2>
 							</ListItemsTitle>
-							{items.map(item => (
-								<Item key={item.id} item={item} />
-							))}
+							<ListItem>
+								{items.map(item => (
+									<Item key={item.id} item={item} />
+								))}
+							</ListItem>
 						</div>
 					);
 				}}

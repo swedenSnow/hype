@@ -9,12 +9,25 @@ const ListItem = styled.div`
 	box-shadow: ${props => props.theme.boxShadow};
 	padding: ${props => props.theme.medium};
 	font-size: ${props => props.theme.medium};
+	width: 25%;
+	display: flex;
+	align-items: space-between;
+
 	p {
 		font-family: 'Raleway', sans-serif;
 	}
 
 	strong {
 		font-family: 'Ubuntu', sans-serif;
+	}
+
+	.image {
+		flex-grow: 1;
+	}
+
+	.item {
+		display: flex;
+		flex-direction: column;
 	}
 
 	.sold {
@@ -62,44 +75,38 @@ class Item extends Component {
 	render() {
 		const { item } = this.props;
 		return (
-			<div>
-				<ListItem>
-					<div className={item.sold ? 'sold' : ''}>
-						<p>
-							<strong>Title: </strong>
-							<Link
-								href={{
-									pathname: '/item',
-									query: { id: item.id },
-								}}
-							>
-								<a>{item.title}</a>
-							</Link>
-						</p>
-						<p>
-							<strong>Price: </strong>
-							{formatMoney(item.price)}
-						</p>
-						<p>
-							<Link
-								href={{
-									pathname: '/item',
-									query: { id: item.id },
-								}}
-							>
-								<a>
-									<img
-										src={item.image}
-										alt={item.title}
-										width="200"
-									/>
-								</a>
-							</Link>
-						</p>
-						{!item.sold && <AddToCart id={item.id} />}
-					</div>
-				</ListItem>
-			</div>
+			<ListItem>
+				<div className={item.sold ? 'item sold' : 'item'}>
+					<p className="image">
+						<Link
+							href={{
+								pathname: '/item',
+								query: { id: item.id },
+							}}
+						>
+							<a>
+								<img
+									src={item.image}
+									alt={item.title}
+									width="200"
+								/>
+							</a>
+						</Link>
+					</p>
+					<p>
+						<Link
+							href={{
+								pathname: '/item',
+								query: { id: item.id },
+							}}
+						>
+							<a>{item.title}</a>
+						</Link>
+					</p>
+					<p>{formatMoney(item.price)}</p>
+					{!item.sold && <AddToCart id={item.id} />}
+				</div>
+			</ListItem>
 		);
 	}
 }
