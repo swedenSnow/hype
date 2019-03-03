@@ -15,7 +15,8 @@
     "jsonwebtoken": "^8.4.0",
     "nodemon": "^1.18.10",
     "prisma": "^1.26.4",
-    "prisma-binding": "^2.3.2"
+    "prisma-binding": "^2.3.2",
+    "stripe": "^6.25.1"
   },
   "devDependencies": {},
   "scripts": {
