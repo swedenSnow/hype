@@ -232,6 +232,42 @@ const Mutations = {
 
         return updatedUser;
     },
+    async updateUserLevel(parent, args, context, info) {
+        if (!context.request.userId) {
+            throw new Error('You must be logged in!');
+        }
+
+        const currentUser = await context.prisma.query.user(
+            {
+                where: {
+                    id: context.request.userId,
+                },
+            },
+            info
+        );
+
+        const isAdmin = currentUser.userLevel === 'ADMIN';
+
+        if (!isAdmin) {
+            throw new Error('You are not allowed to change permissions.');
+        }
+
+        const updatedUser = context.prisma.mutation.updateUser(
+            {
+                data: {
+                    userLevel: {
+                        set: args.userLevel,
+                    },
+                },
+                where: {
+                    id: args.userId,
+                },
+            },
+            info
+        );
+
+        return updatedUser;
+    },
 };
 
 module.exports = Mutations;
