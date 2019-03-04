@@ -5,10 +5,13 @@ type ActionMessage {
 }
 
 type Query {
-    user(id: ID!): User
+   user(id: ID!): User
+    users: [User]!
     self: User
     item(where: ItemWhereUniqueInput!): Item
     items: [Item]!
+    order(id: ID!): Order
+    orders(orderBy: OrderOrderByInput): [Order]!
 }
 
 type Mutation {
@@ -21,8 +24,16 @@ type Mutation {
         price: Int!
         image: String!
     ): Item!
+    updateItem(id: ID!, title: String, description: String, price: Int): Item!
+    deleteItem(id: ID!): ActionMessage
     addToCart(id: ID!): CartItem
     removeFromCart(id: ID!): CartItem
+    requestReset(email: String!): ActionMessage
+    resetPassword(
+        resetToken: String!
+        password: String!
+        confirmPassword: String!
+    ): User!
     createOrder(token: String!): Order!
 }
 

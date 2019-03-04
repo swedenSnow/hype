@@ -1,5 +1,8 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { transport, htmlEmail } = require('../mailer');
+const { randomBytes } = require('crypto');
+const { promisify } = require('util');
 const stripe = require('../stripe');
 
 const Mutations = {
@@ -128,6 +131,76 @@ const Mutations = {
             },
             info
         );
+    },
+    async requestReset(parent, args, context, info) {
+        const user = await context.prisma.query.user({
+            where: { email: args.email },
+        });
+
+        if (user) {
+            const randomBytesPromiseified = promisify(randomBytes);
+            const resetToken = (await randomBytesPromiseified(20)).toString(
+                'hex'
+            );
+            const resetTokenExpiry = Date.now() + 3600000;
+            const res = await context.prisma.mutation.updateUser({
+                where: { email: args.email },
+                data: { resetToken, resetTokenExpiry },
+            });
+
+            await transport.sendMail({
+                from: 'noreply@hypegear.com',
+                to: user.email,
+                subject: 'Your Password Reset Token',
+                html: htmlEmail(`Your Password Reset Token is here!
+            \n\n
+            <a href="${
+                process.env.FRONTEND_URL
+            }/resetpassword?resetToken=${resetToken}">Click Here to Reset</a>`),
+            });
+        }
+
+        return {
+            message: `Password reset was sent to ${args.email}.`,
+        };
+    },
+    async resetPassword(parent, args, context, info) {
+        if (args.password !== args.confirmPassword) {
+            throw new Error("Passwords didn't match!");
+        }
+
+        const [user] = await context.prisma.query.users({
+            where: {
+                resetToken: args.resetToken,
+                resetTokenExpiry_gte: Date.now() - 3600000,
+            },
+        });
+        if (!user) {
+            throw new Error('This token is either invalid or expired!');
+        }
+
+        const password = await bcrypt.hash(args.password, 10);
+
+        const updatedUser = await context.prisma.mutation.updateUser({
+            where: { email: user.email },
+            data: {
+                password,
+                resetToken: null,
+                resetTokenExpiry: null,
+            },
+        });
+
+        const token = jwt.sign(
+            { userId: updatedUser.id },
+            process.env.APP_SECRET
+        );
+
+        context.response.cookie('token', token, {
+            httpOnly: true,
+            maxAge: 1000 * 60 * 60 * 24 * 365,
+        });
+
+        return updatedUser;
     },
     async createOrder(parent, args, context, info) {
         const { userId } = context.request;

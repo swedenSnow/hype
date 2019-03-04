@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/hype/hype-gear/dev
-# timestamp: Fri Mar 01 2019 16:42:24 GMT+0100 (CET)
+# timestamp: Mon Mar 04 2019 09:04:45 GMT+0100 (CET)
 
 type AggregateCartItem {
   count: Int!
@@ -322,6 +322,8 @@ input CartItemWhereUniqueInput {
   id: ID
 }
 
+scalar DateTime
+
 type Item implements Node {
   id: ID!
   title: String!
@@ -329,6 +331,8 @@ type Item implements Node {
   image: String!
   price: Int!
   user: User!
+  sold: Boolean
+  approved: Boolean
 }
 
 """A connection to a list of items."""
@@ -346,6 +350,8 @@ input ItemCreateInput {
   description: String!
   image: String!
   price: Int!
+  sold: Boolean
+  approved: Boolean
   user: UserCreateOneInput!
 }
 
@@ -374,6 +380,10 @@ enum ItemOrderByInput {
   image_DESC
   price_ASC
   price_DESC
+  sold_ASC
+  sold_DESC
+  approved_ASC
+  approved_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -386,6 +396,8 @@ type ItemPreviousValues {
   description: String!
   image: String!
   price: Int!
+  sold: Boolean
+  approved: Boolean
 }
 
 type ItemSubscriptionPayload {
@@ -432,6 +444,8 @@ input ItemUpdateDataInput {
   description: String
   image: String
   price: Int
+  sold: Boolean
+  approved: Boolean
   user: UserUpdateOneRequiredInput
 }
 
@@ -440,6 +454,8 @@ input ItemUpdateInput {
   description: String
   image: String
   price: Int
+  sold: Boolean
+  approved: Boolean
   user: UserUpdateOneRequiredInput
 }
 
@@ -448,6 +464,8 @@ input ItemUpdateManyMutationInput {
   description: String
   image: String
   price: Int
+  sold: Boolean
+  approved: Boolean
 }
 
 input ItemUpdateOneRequiredInput {
@@ -653,6 +671,14 @@ input ItemWhereInput {
 
   """All values greater than or equal the given value."""
   price_gte: Int
+  sold: Boolean
+
+  """All values that are not equal to given value."""
+  sold_not: Boolean
+  approved: Boolean
+
+  """All values that are not equal to given value."""
+  approved_not: Boolean
   user: UserWhereInput
 }
 
@@ -717,6 +743,8 @@ type Order implements Node {
   total: Int!
   user: User!
   charge: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -1359,16 +1387,18 @@ enum OrderOrderByInput {
   total_DESC
   charge_ASC
   charge_DESC
-  updatedAt_ASC
-  updatedAt_DESC
   createdAt_ASC
   createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type OrderPreviousValues {
   id: ID!
   total: Int!
   charge: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type OrderSubscriptionPayload {
@@ -1533,6 +1563,50 @@ input OrderWhereInput {
 
   """All values not ending with the given string."""
   charge_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   items_every: OrderItemWhereInput
   items_some: OrderItemWhereInput
   items_none: OrderItemWhereInput
@@ -1598,9 +1672,9 @@ type User implements Node {
   email: String!
   password: String!
   cart(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem!]
+  userLevel: UserLevel
   resetToken: String
   resetTokenExpiry: Float
-  userLevel: UserLevel
 }
 
 """A connection to a list of items."""
@@ -1619,9 +1693,9 @@ input UserCreateInput {
   lastName: String
   email: String!
   password: String!
+  userLevel: UserLevel
   resetToken: String
   resetTokenExpiry: Float
-  userLevel: UserLevel
   cart: CartItemCreateManyWithoutUserInput
 }
 
@@ -1641,9 +1715,9 @@ input UserCreateWithoutCartInput {
   lastName: String
   email: String!
   password: String!
+  userLevel: UserLevel
   resetToken: String
   resetTokenExpiry: Float
-  userLevel: UserLevel
 }
 
 """An edge in a connection."""
@@ -1673,12 +1747,12 @@ enum UserOrderByInput {
   email_DESC
   password_ASC
   password_DESC
+  userLevel_ASC
+  userLevel_DESC
   resetToken_ASC
   resetToken_DESC
   resetTokenExpiry_ASC
   resetTokenExpiry_DESC
-  userLevel_ASC
-  userLevel_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -1692,9 +1766,9 @@ type UserPreviousValues {
   lastName: String
   email: String!
   password: String!
+  userLevel: UserLevel
   resetToken: String
   resetTokenExpiry: Float
-  userLevel: UserLevel
 }
 
 type UserSubscriptionPayload {
@@ -1742,9 +1816,9 @@ input UserUpdateDataInput {
   lastName: String
   email: String
   password: String
+  userLevel: UserLevel
   resetToken: String
   resetTokenExpiry: Float
-  userLevel: UserLevel
   cart: CartItemUpdateManyWithoutUserInput
 }
 
@@ -1754,9 +1828,9 @@ input UserUpdateInput {
   lastName: String
   email: String
   password: String
+  userLevel: UserLevel
   resetToken: String
   resetTokenExpiry: Float
-  userLevel: UserLevel
   cart: CartItemUpdateManyWithoutUserInput
 }
 
@@ -1766,9 +1840,9 @@ input UserUpdateManyMutationInput {
   lastName: String
   email: String
   password: String
+  userLevel: UserLevel
   resetToken: String
   resetTokenExpiry: Float
-  userLevel: UserLevel
 }
 
 input UserUpdateOneInput {
@@ -1800,9 +1874,9 @@ input UserUpdateWithoutCartDataInput {
   lastName: String
   email: String
   password: String
+  userLevel: UserLevel
   resetToken: String
   resetTokenExpiry: Float
-  userLevel: UserLevel
 }
 
 input UserUpsertNestedInput {
@@ -2064,6 +2138,16 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   password_not_ends_with: String
+  userLevel: UserLevel
+
+  """All values that are not equal to given value."""
+  userLevel_not: UserLevel
+
+  """All values that are contained in given list."""
+  userLevel_in: [UserLevel!]
+
+  """All values that are not contained in given list."""
+  userLevel_not_in: [UserLevel!]
   resetToken: String
 
   """All values that are not equal to given value."""
@@ -2126,16 +2210,6 @@ input UserWhereInput {
 
   """All values greater than or equal the given value."""
   resetTokenExpiry_gte: Float
-  userLevel: UserLevel
-
-  """All values that are not equal to given value."""
-  userLevel_not: UserLevel
-
-  """All values that are contained in given list."""
-  userLevel_in: [UserLevel!]
-
-  """All values that are not contained in given list."""
-  userLevel_not_in: [UserLevel!]
   cart_every: CartItemWhereInput
   cart_some: CartItemWhereInput
   cart_none: CartItemWhereInput
@@ -2143,5 +2217,6 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  userName: String
   email: String
 }

@@ -4,32 +4,34 @@ enum UserLevel {
 }
 
 type User {
-   id: ID! @unique
-   userName: String
-   firstName: String
-   lastName: String
-   email: String! @unique
-   password: String!
-   cart: [CartItem!]!
-   resetToken: String
-   resetTokenExpiry: Float
-   userLevel: UserLevel
+    id: ID! @unique
+    userName: String @unique
+    firstName: String
+    lastName: String
+    email: String! @unique
+    password: String!
+    cart: [CartItem!]!
+    userLevel: UserLevel
+    resetToken: String
+    resetTokenExpiry: Float
 }
 
 type Item {
-   id: ID! @unique
-   title: String!
-   description: String!
-   image: String!
-   price: Int!
-   user: User!
+    id: ID! @unique
+    title: String!
+    description: String!
+    image: String!
+    price: Int!
+    user: User!
+    sold: Boolean @default(value: false)
+    approved: Boolean @default(value: false)
 }
 
 type CartItem {
-   id: ID! @unique
-   quantity: Int! @default(value: 1)
-   item: Item!
-   user: User!
+    id: ID! @unique
+    quantity: Int! @default(value: 1)
+    item: Item!
+    user: User!
 }
 
 type OrderItem {
@@ -38,7 +40,7 @@ type OrderItem {
     description: String!
     image: String!
     price: Int!
-    quantity: Int! @default(value: "1")
+    quantity: Int! @default(value: 1)
     user: User
 }
 
@@ -48,4 +50,6 @@ type Order {
     total: Int!
     user: User!
     charge: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
 }
