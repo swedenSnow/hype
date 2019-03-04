@@ -9,12 +9,14 @@ const CartItemStyles = styled.li`
 	border-bottom: 1px solid ${props => props.theme.offWhite};
 	list-style: none;
 	overflow: scroll;
-	/* width: 100%; */
 	display: grid;
 	align-items: center;
 	grid-template-columns: auto 1fr auto;
 	img {
 		margin-right: ${props => props.theme.root};
+	}
+	p {
+		font-size: 2rem;
 	}
 `;
 

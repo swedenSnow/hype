@@ -1,6 +1,11 @@
 enum UserLevel {
+<<<<<<< HEAD
     ADMIN
     USER
+=======
+   ADMIN
+   USER
+>>>>>>> checkout
 }
 
 type User {
