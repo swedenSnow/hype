@@ -35,10 +35,11 @@ class Account extends Component {
 									<br />
 									<strong>Username: </strong>
 									{data.self.userName} <br />
-									<strong>Mame: </strong>
-									{data.self.firstName +
-										' ' +
-										data.self.lastName}
+									<strong>Name: </strong>
+									{data.self.firstName &&
+										data.self.firstName +
+											' ' +
+											data.self.lastName}
 									<br />
 									<strong>Address: </strong>
 									<br />

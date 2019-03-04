@@ -80,78 +80,78 @@ const NavStyled = styled.nav`
 
 const Nav = () => (
 	<User>
-		{({ data: { self } }) => {
-			return (
-				<NavStyled>
-					<ul>
-						<li>
-							<Link prefetch href="/">
-								<a>Home</a>
-							</Link>
-						</li>
-						<li>
-							<Link href="/shop">
-								<a>Shop</a>
-							</Link>
-						</li>
-						<li>
-							<Link href="/faq">
-								<a>FAQ</a>
-							</Link>
-						</li>
-						{self && (
-							<>
-								<li>
-									<Link href="/sell">
-										<a>Sell Item</a>
-									</Link>
-								</li>
-								<li>
-									<Link href="/account">
-										<a>My Account</a>
-									</Link>
-								</li>
-								<Signout />
-								<CartCount
-									count={self.cart.reduce(
-										(total, cartItem) =>
-											total + cartItem.quantity,
-										0
-									)}
-								/>
-							</>
-						)}
-						{!self && (
-							<>
-								<li>
-									<Link href="/signin">
-										<a>Sign In</a>
-									</Link>
-								</li>
-								<li>
-									<Link href="/signup">
-										<a>Sign Up</a>
-									</Link>
-								</li>
-							</>
-						)}
-						{
-							<>
-								<li className="cart">
-									<Link href="/cart">
-										<a>
-											<FontAwesomeIcon
-												icon={faShoppingCart}
-											/>
-										</a>
-									</Link>
-								</li>
-							</>
-						}
-					</ul>
-				</NavStyled>
-			);
-		}}
+		{({ data: { self } }) => (
+			<NavStyled>
+				<ul>
+					<li>
+						<Link prefetch href="/">
+							<a>Home</a>
+						</Link>
+					</li>
+					<li>
+						<Link href="/shop">
+							<a>Shop</a>
+						</Link>
+					</li>
+					<li>
+						<Link href="/faq">
+							<a>FAQ</a>
+						</Link>
+					</li>
+					{self && (
+						<>
+							<li>
+								<Link href="/sell">
+									<a>Sell Item</a>
+								</Link>
+							</li>
+							<li>
+								<Link href="/account">
+									<a>My Account</a>
+								</Link>
+							</li>
+
+							<Signout />
+
+							<CartCount
+								count={self.cart.reduce(
+									(total, cartItem) =>
+										total + cartItem.quantity,
+									0
+								)}
+							/>
+						</>
+					)}
+					{!self && (
+						<>
+							<li>
+								<Link href="/signin">
+									<a>Sign In</a>
+								</Link>
+							</li>
+							<li>
+								<Link href="/signup">
+									<a>Sign Up</a>
+								</Link>
+							</li>
+						</>
+					)}
+					{
+						<>
+							<li className="cart">
+								<Link href="/cart">
+									<a>
+										<FontAwesomeIcon
+											icon={faShoppingCart}
+										/>
+									</a>
+								</Link>
+							</li>
+						</>
+					}
+				</ul>
+			</NavStyled>
+		)}
 	</User>
 );
 

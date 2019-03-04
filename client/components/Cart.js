@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Link from 'next/link';
+import styled from 'styled-components';
 
 import CloseButton from './styles/CloseButton';
 import StyledButton from './styles/StyledButton';
 import User from './User';
 import CartItem from './CartItem';
 import calcTotalPrice from '../lib/calcTotalPrice';
+import Checkout from './Checkout';
+
+const TotalCheckout = styled.div`
+	p {
+		font-size: 2rem;
+	}
+`;
 
 class Cart extends Component {
 	render() {
@@ -30,7 +38,13 @@ class Cart extends Component {
 					console.log(self);
 					return (
 						<div>
-							<CloseButton title="close">&times;</CloseButton>
+							<Link href="/shop">
+								<a>
+									<CloseButton title="close">
+										&times;
+									</CloseButton>
+								</a>
+							</Link>
 							<h3>
 								This is {!self.name ? ' an Noname' : self.name}{' '}
 								cart
@@ -53,12 +67,18 @@ class Cart extends Component {
 										/>
 									))}
 								</ul>
-								<div className="calcTotalPrice">
-									<h3>Total amount</h3>
+								<TotalCheckout>
+									<h2>Total amount</h2>
 									<p>€{calcTotalPrice(self.cart)}</p>
-								</div>
+								</TotalCheckout>
 							</div>
-							<StyledButton disabled>Checkout</StyledButton>
+							{self.cart.length && (
+								<Checkout>
+									<StyledButton disabled={false}>
+										Checkout
+									</StyledButton>
+								</Checkout>
+							)}
 						</div>
 					);
 				}}

@@ -34,8 +34,8 @@ type Mutation {
         password: String!
         confirmPassword: String!
     ): User!
-
     updateUserLevel(userLevel: UserLevel!, userId: ID!): User!
+    createOrder(token: String!): Order!
 }
 
 type User {

@@ -5,12 +5,9 @@ const StyledButton = styled.button`
 	color: ${props => props.theme.white};
 	border: 0;
 	border-radius: 3px;
-	padding: 0.8rem 0.5rem;
-
-	/* transform: skew(-10deg);
-	 */
+	padding: 0.8rem 4rem;
 	text-transform: uppercase;
-	font-size: ${props => props.theme.root};
+	font-size: ${props => props.theme.medium};
 	&[disabled] {
 		opacity: 0.5;
 	}
