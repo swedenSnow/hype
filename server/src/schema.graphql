@@ -12,6 +12,7 @@ type Query {
     items: [Item]!
     order(id: ID!): Order
     orders(orderBy: OrderOrderByInput): [Order]!
+    myOrders(orderBy: OrderOrderByInput): [Order]!
 }
 
 type Mutation {

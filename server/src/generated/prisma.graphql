@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/hype/hype-gear/dev
-# timestamp: Sun Mar 03 2019 14:20:24 GMT+0100 (GMT+01:00)
+# timestamp: Mon Mar 04 2019 22:26:19 GMT+0100 (GMT+01:00)
 
 type AggregateCartItem {
   count: Int!
@@ -745,6 +745,7 @@ type Order implements Node {
   charge: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+  dispatched: Boolean
 }
 
 """A connection to a list of items."""
@@ -760,6 +761,7 @@ type OrderConnection {
 input OrderCreateInput {
   total: Int!
   charge: String!
+  dispatched: Boolean
   items: OrderItemCreateManyInput
   user: UserCreateOneInput!
 }
@@ -1391,6 +1393,8 @@ enum OrderOrderByInput {
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  dispatched_ASC
+  dispatched_DESC
 }
 
 type OrderPreviousValues {
@@ -1399,6 +1403,7 @@ type OrderPreviousValues {
   charge: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+  dispatched: Boolean
 }
 
 type OrderSubscriptionPayload {
@@ -1443,6 +1448,7 @@ input OrderSubscriptionWhereInput {
 input OrderUpdateInput {
   total: Int
   charge: String
+  dispatched: Boolean
   items: OrderItemUpdateManyInput
   user: UserUpdateOneRequiredInput
 }
@@ -1450,6 +1456,7 @@ input OrderUpdateInput {
 input OrderUpdateManyMutationInput {
   total: Int
   charge: String
+  dispatched: Boolean
 }
 
 input OrderWhereInput {
@@ -1607,6 +1614,10 @@ input OrderWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  dispatched: Boolean
+
+  """All values that are not equal to given value."""
+  dispatched_not: Boolean
   items_every: OrderItemWhereInput
   items_some: OrderItemWhereInput
   items_none: OrderItemWhereInput

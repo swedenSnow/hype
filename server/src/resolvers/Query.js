@@ -66,8 +66,21 @@ const Query = {
             throw new Error('You must be logged in!');
         }
 
-        // Needs permission Check?
+        const isAdmin = context.request.user.userLevel === 'ADMIN';
 
+        if (!isAdmin) {
+            throw new Error(
+                'You are not allowed to see the information for this order.'
+            );
+        }
+
+        return context.prisma.query.orders({}, info);
+    },
+    async myOrders(parent, args, context, info) {
+        const { userId } = context.request;
+        if (!userId) {
+            throw new Error('You must be logged in!');
+        }
         return context.prisma.query.orders(
             {
                 where: {

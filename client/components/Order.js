@@ -1,24 +1,129 @@
 import React from 'react';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import styled from 'styled-components';
+import formatMoney from '../lib/formatMoney';
+import Link from 'next/link';
+
+const OrderTable = styled.table`
+	width: 80%;
+
+	th,
+	td {
+		text-align: left;
+	}
+`;
+
+const OrderItemsTable = styled.table`
+	width: 80%;
+
+	th,
+	td {
+		text-align: left;
+	}
+	.product-image {
+		width: 100px;
+		height: auto;
+	}
+`;
+
+const ORDER_QUERY = gql`
+	query ORDER_QUERY($id: ID!) {
+		order(id: $id) {
+			id
+			charge
+			total
+			createdAt
+			dispatched
+			user {
+				id
+			}
+			items {
+				id
+				title
+				description
+				price
+				image
+				quantity
+			}
+		}
+	}
+`;
 
 const Order = props => {
 	return (
-		<div>
-			<div>
-				<div>
-					<p>Item #1</p>
-					<p>x2</p>
-					<p>$9.99</p>
-				</div>
-				<div>
-					<p>Item #2</p>
-					<p>x1</p>
-					<p>$9.99</p>
-				</div>
-			</div>
-			<p>
-				<strong>Order Total:</strong> $29.97
-			</p>
-		</div>
+		<Query query={ORDER_QUERY} variables={{ id: props.id }}>
+			{({ data, loading, error }) => {
+				if (loading) return <p>Loading...</p>;
+				const { order } = data;
+				return (
+					<div>
+						<OrderTable>
+							<thead>
+								<tr>
+									<th>Order ID:</th>
+									<th>Items:</th>
+									<th>Products:</th>
+									<th>Total:</th>
+									<th>Dispatched:</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>{order.id}</td>
+									<td>
+										{order.items.reduce(
+											(a, b) => a + b.quantity,
+											0
+										)}
+									</td>
+									<td>{order.items.length}</td>
+									<td>{formatMoney(order.total)}</td>
+									<td>
+										{order.dispatched === true
+											? 'Yes'
+											: 'No'}
+									</td>
+								</tr>
+							</tbody>
+						</OrderTable>
+						<OrderItemsTable>
+							<thead>
+								<tr>
+									<th>&nbsp;</th>
+									<th>Item:</th>
+									<th>Quantity:</th>
+									<th>Price:</th>
+								</tr>
+							</thead>
+							<tbody>
+								{order.items.map(item => {
+									console.log(item);
+									return (
+										<tr key={item.id}>
+											<td>
+												<img
+													className="product-image"
+													src={item.image}
+													alt={item.title}
+												/>
+											</td>
+											<td>{item.title}</td>
+											<td>x{item.quantity}</td>
+											<td>{formatMoney(item.price)}</td>
+										</tr>
+									);
+								})}
+							</tbody>
+						</OrderItemsTable>
+						<div>
+							<div />
+							<p />
+						</div>
+					</div>
+				);
+			}}
+		</Query>
 	);
 };
 

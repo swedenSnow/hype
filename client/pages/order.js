@@ -7,8 +7,7 @@ const OrdersPage = props => (
 			<title>Hype-gear || Order: #1</title>
 		</Head>
 		<div>
-			<p>Show order information here...</p>
-			<Order />
+			<Order id={props.query.id} />
 		</div>
 	</div>
 );

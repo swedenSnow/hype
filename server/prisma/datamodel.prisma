@@ -1,11 +1,6 @@
 enum UserLevel {
-<<<<<<< HEAD
     ADMIN
     USER
-=======
-   ADMIN
-   USER
->>>>>>> checkout
 }
 
 type User {
@@ -57,4 +52,5 @@ type Order {
     charge: String!
     createdAt: DateTime!
     updatedAt: DateTime!
+    dispatched: Boolean @default(value: false)
 }
