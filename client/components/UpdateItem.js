@@ -125,8 +125,7 @@ class UpdateItem extends Component {
 													/>
 												</label>
 												<StyledButton>
-													{' '}
-													Sell Item{' '}
+													Update Item
 												</StyledButton>
 											</fieldset>
 										</form>
