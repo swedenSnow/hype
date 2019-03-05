@@ -9,6 +9,7 @@ const ErrorStyles = styled.div`
 	border: 1px solid rgba(0, 0, 0, 0.05);
 	border-left: 2px solid ${props => props.theme.blue};
 	border-top: 2px solid ${props => props.theme.blue};
+	font-size: ${props => props.theme.root};
 	p {
 		margin: 0;
 	}
@@ -21,7 +22,7 @@ const ErrorStyles = styled.div`
 const ErrorMsg = ({ error }) => (
 	<ErrorStyles>
 		<p>
-			<strong>Something went wrong!</strong>
+			<strong>Oups!</strong>
 			{error.message.replace('GraphQL error: ', '')}
 		</p>
 	</ErrorStyles>

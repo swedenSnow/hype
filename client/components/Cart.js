@@ -52,7 +52,7 @@ class Cart extends Component {
 							</h3>
 							<p>
 								{self.cart.length === 0 && (
-									<p>Your cart is currently empty</p>
+									<em>Your cart is currently empty</em>
 								)}
 								{self.cart.length > 0 &&
 									`You have ${self.cart.length} item
