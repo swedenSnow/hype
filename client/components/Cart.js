@@ -10,6 +10,7 @@ import User from './User';
 import CartItem from './CartItem';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import Checkout from './Checkout';
+import formatMoney from '../lib/formatMoney';
 
 const TotalCheckout = styled.div`
 	p {
@@ -69,7 +70,9 @@ class Cart extends Component {
 								</ul>
 								<TotalCheckout>
 									<h2>Total amount</h2>
-									<p>€{calcTotalPrice(self.cart)}</p>
+									<p>
+										{formatMoney(calcTotalPrice(self.cart))}
+									</p>
 								</TotalCheckout>
 							</div>
 							{self.cart.length && (
