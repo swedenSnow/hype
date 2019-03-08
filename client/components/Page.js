@@ -9,12 +9,13 @@ const theme = {
 	root: '1.5rem',
 	medium: '2rem',
 	big: '2.8rem',
-	blue: '#193773',
+	// blue: '#193773',
+	blue: '#181717',
 	lightBlue: '#4080ff',
 	red: '#FF0000',
 	white: '#FFF',
 	offWhite: '#EDEDED',
-	lightgrey: '#E1E1E1',
+	lightgrey: '#f5f5f5',
 	black: '#181717',
 	maxWidthInner: '1100px',
 	boxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
@@ -22,11 +23,11 @@ const theme = {
 
 const StyledPage = styled.div`
 	padding-top: 2rem;
-	background: ${props => props.theme.white};
+	background: ${props => props.theme.lightgrey};
 `;
 
 const Inner = styled.div`
-	max-width: ${props => props.theme.maxWidthInner};
+	/* max-width: ${props => props.theme.maxWidthInner}; */
 	margin: 0 auto;
 	padding: 2rem;
 	box-shadow: ${props => props.theme.boxShadow};
@@ -50,7 +51,7 @@ const GlobalStyle = createGlobalStyle`
 	body {
     background-color: ${props => (props.nightMode ? 'black' : 'white')};
     color: ${props => (props.nightMode ? 'white' : 'black')};
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'open', sans-serif;
 	font-size: 1.5rem;
 	line-height: 1.7;
 	/* font-family: 'Raleway', sans-serif; */

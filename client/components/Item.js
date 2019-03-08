@@ -9,10 +9,13 @@ import StyledButton from './styles/StyledButton';
 const ListItem = styled.div`
 	box-shadow: ${props => props.theme.boxShadow};
 	padding: ${props => props.theme.medium};
+	margin: ${props => props.theme.medium};
 	font-size: ${props => props.theme.medium};
-	width: 25%;
+	width: calc(25% - 4rem);
 	display: flex;
 	align-items: space-between;
+	background: #fff;
+	justify-content: center;
 
 	p {
 		font-family: 'Raleway', sans-serif;
@@ -26,12 +29,14 @@ const ListItem = styled.div`
 		flex-grow: 1;
 		display: flex;
 		align-items: center;
+		justify-content: center;
 	}
 
 	.item {
 		display: flex;
 		flex-direction: column;
 		text-align: center;
+		width: 100%;
 	}
 
 	.sold {
@@ -42,7 +47,7 @@ const ListItem = styled.div`
 			content: 'SOLD';
 			position: absolute;
 			top: 80px;
-			left: 20px;
+			left: 60px;
 			z-index: 1;
 			font-family: Arial, sans-serif;
 			-webkit-transform: rotate(-45deg);

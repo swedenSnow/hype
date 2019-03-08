@@ -12,7 +12,8 @@ const NavStyled = styled.nav`
 	display: flex;
 	align-items: center;
 	font-size: ${props => props.theme.medium};
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open', sans-serif;
+	font-weight: 300;
 
 	ul {
 		list-style-type: none;
@@ -34,7 +35,7 @@ const NavStyled = styled.nav`
 					content: '';
 					position: absolute;
 					height: 2px;
-					background-color: #193773;
+					background-color: ${props => props.theme.black};
 					width: 0;
 					left: 50%;
 					bottom: 0;
@@ -47,8 +48,9 @@ const NavStyled = styled.nav`
 				}
 
 				&:hover {
-					color: #193773;
-
+					color: ${props => props.theme.black};
+					font-weight: 700;
+					transform: scale(1.1);
 					&:after {
 						width: 100%;
 					}
@@ -56,7 +58,7 @@ const NavStyled = styled.nav`
 			}
 
 			&.cart {
-				color: #193773;
+				color: ${props => props.theme.offWhite};
 				a {
 					&:after {
 						content: none;
@@ -94,6 +96,11 @@ const Nav = () => (
 						</Link>
 					</li>
 					<li>
+						<Link href="/aboutus">
+							<a>About Us</a>
+						</Link>
+					</li>
+					<li>
 						<Link href="/faq">
 							<a>FAQ</a>
 						</Link>
@@ -112,14 +119,25 @@ const Nav = () => (
 							</li>
 
 							<Signout />
-
-							<CartCount
-								count={self.cart.reduce(
-									(total, cartItem) =>
-										total + cartItem.quantity,
-									0
-								)}
-							/>
+							{
+								<li className="cart">
+									<Link href="/cart">
+										<a>
+											<FontAwesomeIcon
+												icon={faShoppingCart}
+											/>
+											<CartCount
+												count={self.cart.reduce(
+													(total, cartItem) =>
+														total +
+														cartItem.quantity,
+													0
+												)}
+											/>
+										</a>
+									</Link>
+								</li>
+							}
 						</>
 					)}
 					{!self && (
@@ -136,19 +154,6 @@ const Nav = () => (
 							</li>
 						</>
 					)}
-					{
-						<>
-							<li className="cart">
-								<Link href="/cart">
-									<a>
-										<FontAwesomeIcon
-											icon={faShoppingCart}
-										/>
-									</a>
-								</Link>
-							</li>
-						</>
-					}
 				</ul>
 			</NavStyled>
 		)}
