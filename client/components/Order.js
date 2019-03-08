@@ -2,6 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
+import { format } from 'date-fns';
 import formatMoney from '../lib/formatMoney';
 import Link from 'next/link';
 
@@ -65,6 +66,7 @@ const Order = props => {
 									<th>Items:</th>
 									<th>Products:</th>
 									<th>Total:</th>
+									<th>Order Placed:</th>
 									<th>Dispatched:</th>
 								</tr>
 							</thead>
@@ -79,6 +81,12 @@ const Order = props => {
 									</td>
 									<td>{order.items.length}</td>
 									<td>{formatMoney(order.total)}</td>
+									<td>
+										{format(
+											order.createdAt,
+											'MMMM d, YYYY h:mm a'
+										)}
+									</td>
 									<td>
 										{order.dispatched === true
 											? 'Yes'
@@ -116,10 +124,6 @@ const Order = props => {
 								})}
 							</tbody>
 						</OrderItemsTable>
-						<div>
-							<div />
-							<p />
-						</div>
 					</div>
 				);
 			}}

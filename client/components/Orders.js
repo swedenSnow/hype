@@ -57,7 +57,7 @@ class Orders extends Component {
 				{({ data, loading, error }) => {
 					return (
 						<div>
-							My orders
+							<h2>My orders</h2>
 							<StyledOrdersTable>
 								<thead>
 									<tr>

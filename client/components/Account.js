@@ -28,25 +28,61 @@ class Account extends Component {
 						if (data.self) {
 							return (
 								<div>
-									<strong>E-mail: </strong>
-									<a href={`mailto:${data.self.email}`}>
-										{data.self.email}
-									</a>
-									<br />
-									<strong>Username: </strong>
-									{data.self.userName} <br />
-									<strong>Name: </strong>
-									{data.self.firstName &&
-										data.self.firstName +
-											' ' +
-											data.self.lastName}
-									<br />
-									<strong>Address: </strong>
-									<br />
-									<strong>Postal Code: </strong>
-									<br />
-									<strong>City: </strong>
-									<br />
+									<table>
+										<tbody>
+											<tr>
+												<td>
+													<strong>E-mail: </strong>
+												</td>
+												<td>
+													<a
+														href={`mailto:${
+															data.self.email
+														}`}
+													>
+														{data.self.email}
+													</a>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>Username:</strong>
+												</td>
+												<td>{data.self.userName}</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>Name:</strong>
+												</td>
+												<td>
+													{data.self.firstName &&
+														data.self.firstName +
+															' ' +
+															data.self.lastName}
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>Address:</strong>
+												</td>
+												<td />
+											</tr>
+											<tr>
+												<td>
+													<strong>
+														Postal Code:
+													</strong>
+												</td>
+												<td />
+											</tr>
+											<tr>
+												<td>
+													<strong>City:</strong>
+												</td>
+												<td />
+											</tr>
+										</tbody>
+									</table>
 									<hr />
 									<Link href="/orders">
 										<a>My Orders</a>
@@ -60,8 +96,6 @@ class Account extends Component {
 									>
 										<a>Update Details</a>
 									</Link>
-									<br />
-									Change Password
 									<br />
 								</div>
 							);
