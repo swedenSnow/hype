@@ -22,7 +22,7 @@ class Cart extends Component {
 	render() {
 		return (
 			<User>
-				{({ data: { self, cart } }) => {
+				{({ data: { self } }) => {
 					if (!self)
 						return (
 							<>
