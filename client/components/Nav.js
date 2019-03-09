@@ -11,7 +11,7 @@ import CartCount from './CartCount';
 const NavStyled = styled.nav`
 	display: flex;
 	align-items: center;
-	font-size: ${props => props.theme.medium};
+	font-size: ${props => props.theme.root};
 	font-family: 'Open', sans-serif;
 	font-weight: 300;
 
@@ -25,7 +25,7 @@ const NavStyled = styled.nav`
 				display: inline-block;
 				text-decoration: none;
 				letter-spacing: 1px;
-				text-transform: uppercase;
+				/* text-transform: uppercase; */
 				position: relative;
 				-webkit-transition: all 0.4s ease;
 				transition: all 0.4s ease;
@@ -50,7 +50,7 @@ const NavStyled = styled.nav`
 				&:hover {
 					color: ${props => props.theme.black};
 					font-weight: 700;
-					transform: scale(1.1);
+					transform: skew(-15deg);
 					&:after {
 						width: 100%;
 					}

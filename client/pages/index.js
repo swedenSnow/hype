@@ -93,6 +93,7 @@ const StyledGrid = styled.div`
 		position: relative;
 		margin: 4vw;
 		z-index: 2;
+		line-height: 1.2;
 
 		.content {
 			position: relative;
@@ -100,6 +101,17 @@ const StyledGrid = styled.div`
 		}
 		.link-content {
 			margin-bottom: 0.75rem;
+		}
+		h3 {
+			font-size: 2rem;
+			font-weight: 100;
+		}
+		h2 {
+			font-size: 3rem;
+			font-weight: 400;
+		}
+		&:hover {
+			background: red;
 		}
 	}
 `;
@@ -121,7 +133,9 @@ const HomePage = props => (
 							</figure>
 							<div className="inner">
 								<div className="content">
-									<div className="link-content">Shop</div>
+									<div className="link-content">
+										<h3>Shop</h3>
+									</div>
 									<h2>Shop Now</h2>
 								</div>
 							</div>
@@ -136,7 +150,9 @@ const HomePage = props => (
 							</figure>
 							<div className="inner">
 								<div className="content">
-									<div className="link-content">About Us</div>
+									<div className="link-content">
+										<h3>About Us</h3>
+									</div>
 									<h2>Read More</h2>
 								</div>
 							</div>
@@ -151,7 +167,9 @@ const HomePage = props => (
 							</figure>
 							<div className="inner">
 								<div className="content">
-									<div className="link-content">FAQ</div>
+									<div className="link-content">
+										<h3>FAQ</h3>
+									</div>
 									<h2>Any Questions ?</h2>
 								</div>
 							</div>
@@ -159,9 +177,8 @@ const HomePage = props => (
 					</Link>
 				</div>
 			</StyledGrid>
-			<h3>Featured items</h3>
-			<p>Maybe one day?</p>
-			<FeaturedItems />
+
+			{/* <FeaturedItems /> */}
 		</div>
 	</div>
 );

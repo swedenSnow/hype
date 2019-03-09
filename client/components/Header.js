@@ -6,6 +6,9 @@ const HeaderStyled = styled.header`
 	display: flex;
 	align-items: center;
 	flex-flow: row wrap;
+	background-color: ${props => props.theme.white};
+	margin-bottom: -1rem;
+	padding: ${props => props.theme.XL};
 
 	.logo {
 		margin-left: 2rem;

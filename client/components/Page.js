@@ -9,6 +9,7 @@ const theme = {
 	root: '1.5rem',
 	medium: '2rem',
 	big: '2.8rem',
+	XL: '4rem',
 	// blue: '#193773',
 	blue: '#181717',
 	lightBlue: '#4080ff',
@@ -22,14 +23,14 @@ const theme = {
 };
 
 const StyledPage = styled.div`
-	padding-top: 2rem;
+	margin-top: ${props => props.theme.XL};
 	background: ${props => props.theme.lightgrey};
 `;
 
 const Inner = styled.div`
 	/* max-width: ${props => props.theme.maxWidthInner}; */
 	margin: 0 auto;
-	padding: 2rem;
+	/* padding: 2rem; */
 	box-shadow: ${props => props.theme.boxShadow};
 `;
 
@@ -74,7 +75,7 @@ class Page extends Component {
 							<Header />
 							<GlobalStyle />
 							<Inner>{this.props.children}</Inner>
-							<Footer />
+							{/* <Footer /> */}
 						</StyledPage>
 					</>
 				</ThemeProvider>
