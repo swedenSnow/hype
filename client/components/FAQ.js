@@ -8,7 +8,7 @@ import Footer from './Footer';
 const StyledFAQ = styled.div`
 	max-width: 1200px;
 	margin: 0 auto;
-	height: 100%;
+	height: 80vh;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
