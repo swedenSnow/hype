@@ -5,19 +5,23 @@ import { CURRENTUSER_QUERY } from './User';
 import { SignupForm } from './styles/SignupForm';
 import StyledButton from './styles/StyledButton';
 import ErrorMsg from './ErrorMsg';
+import FormContainer from './styles/FormContainer';
 
 const SIGNUP_MUTATION = gql`
 	mutation SIGNUP_MUTATION(
+		$userName: String!
 		$email: String!
 		$password: String!
 		$confirmPassword: String!
 	) {
 		signup(
+			userName: $userName
 			email: $email
 			password: $password
 			confirmPassword: $confirmPassword
 		) {
 			id
+			userName
 			email
 			firstName
 		}
@@ -26,6 +30,7 @@ const SIGNUP_MUTATION = gql`
 
 class Signup extends Component {
 	state = {
+		userName: '',
 		email: '',
 		password: '',
 		confirmPassword: '',
@@ -53,55 +58,65 @@ class Signup extends Component {
 					}
 
 					return (
-						<SignupForm>
-							{error && <ErrorMsg error={error} />}
-							<form
-								method="post"
-								onSubmit={async e => {
-									e.preventDefault();
-									await signup();
-									this.setState({
-										email: '',
-										password: '',
-										confirmPassword: '',
-									});
-								}}
-							>
-								<fieldset>
-									<label htmlFor="email">
-										E-mail:
-										<input
-											type="email"
-											name="email"
-											value={this.state.email}
-											onChange={this.handleChange}
-										/>
-									</label>
-									<label htmlFor="password">
-										Password:
-										<input
-											type="password"
-											name="password"
-											value={this.state.password}
-											onChange={this.handleChange}
-										/>
-									</label>
-									<label htmlFor="confirmPassword">
-										Confirm Password:
-										<input
-											type="password"
-											name="confirmPassword"
-											value={this.state.confirmPassword}
-											onChange={this.handleChange}
-										/>
-									</label>
-									<StyledButton>
-										Toggle Show Password!!
-									</StyledButton>
-									<StyledButton>Sign Up</StyledButton>
-								</fieldset>
-							</form>
-						</SignupForm>
+						<FormContainer>
+							<SignupForm>
+								{error && <ErrorMsg error={error} />}
+								<form
+									method="post"
+									onSubmit={async e => {
+										e.preventDefault();
+										await signup();
+										this.setState({
+											email: '',
+											password: '',
+											confirmPassword: '',
+										});
+									}}
+								>
+									<fieldset>
+										<label htmlFor="userName">
+											Username:
+											<input
+												type="text"
+												name="userName"
+												value={this.state.userName}
+												onChange={this.handleChange}
+											/>
+										</label>
+										<label htmlFor="email">
+											E-mail:
+											<input
+												type="email"
+												name="email"
+												value={this.state.email}
+												onChange={this.handleChange}
+											/>
+										</label>
+										<label htmlFor="password">
+											Password:
+											<input
+												type="password"
+												name="password"
+												value={this.state.password}
+												onChange={this.handleChange}
+											/>
+										</label>
+										<label htmlFor="confirmPassword">
+											Confirm Password:
+											<input
+												type="password"
+												name="confirmPassword"
+												value={
+													this.state.confirmPassword
+												}
+												onChange={this.handleChange}
+											/>
+										</label>
+										<StyledButton>Sign Up</StyledButton>
+									</fieldset>
+								</form>
+							</SignupForm>
+						</FormContainer>
 					);
 				}}
 			</Mutation>

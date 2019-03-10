@@ -14,7 +14,6 @@ const SIGNOUT_MUTATION = gql`
 
 const SignoutButton = styled.button`
 	padding: 0 2rem 0 0;
-	text-transform: uppercase;
 `;
 
 const Signout = props => (

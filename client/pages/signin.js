@@ -6,9 +6,9 @@ const SigninPage = props => (
 		<Head>
 			<title>Hype-gear || Sign In</title>
 		</Head>
-		<div>
+		<>
 			<Signin />
-		</div>
+		</>
 	</div>
 );
 

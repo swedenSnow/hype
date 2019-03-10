@@ -10,7 +10,6 @@ const theme = {
 	medium: '2rem',
 	big: '2.8rem',
 	XL: '4rem',
-	// blue: '#193773',
 	blue: '#181717',
 	lightBlue: '#4080ff',
 	red: '#FF0000',
@@ -30,10 +29,7 @@ const StyledPage = styled.div`
 `;
 
 const Inner = styled.div`
-	/* max-width: ${props => props.theme.maxWidthInner}; */
 	margin: 0 auto;
-
-	/* box-shadow: ${props => props.theme.boxShadow}; */
 `;
 
 const GlobalStyle = createGlobalStyle`

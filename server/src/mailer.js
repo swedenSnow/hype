@@ -1,6 +1,15 @@
 const nodemailer = require('nodemailer');
+const postmarkTransport = require('nodemailer-postmark-transport');
 
-const transport = nodemailer.createTransport({
+const transport = nodemailer.createTransport(
+    postmarkTransport({
+        auth: {
+            apiKey: process.env.POSTMARK_API,
+        },
+    })
+);
+
+const transportMailTrap = nodemailer.createTransport({
     host: process.env.MAIL_HOST,
     port: process.env.MAIL_PORT,
     auth: {

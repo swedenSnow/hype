@@ -32,7 +32,7 @@ const Mutations = {
 
         return user;
     },
-    async signin(parent, { email, password }, context, info) {
+    async signin(_, { email, password }, context, info) {
         const user = await context.prisma.query.user({ where: { email } });
         if (!user) {
             throw new Error(`No such user found for email ${email}`);
@@ -97,9 +97,9 @@ const Mutations = {
         );
         const ownsItem = item.user.id === context.request.userId;
 
-        // ToDo: Add Admin Check here
+        const isAdmin = currentUser.userLevel === 'ADMIN';
 
-        if (!ownsItem) {
+        if (!ownsItem && !isAdmin) {
             throw new Error("You don't have permissions to do that");
         }
 
@@ -180,7 +180,7 @@ const Mutations = {
             });
 
             await transport.sendMail({
-                from: 'noreply@hypegear.com',
+                from: 'hello@indiehjaerta.com',
                 to: user.email,
                 subject: 'Your Password Reset Token',
                 html: htmlEmail(`Your Password Reset Token is here!
@@ -191,6 +191,7 @@ const Mutations = {
             });
         }
 
+        console.log('host:' + process.env.MAIL_HOST);
         return {
             message: `Password reset was sent to ${args.email}.`,
         };
@@ -325,6 +326,19 @@ const Mutations = {
             where: { id_in: cartItemIds },
         });
         return order;
+    },
+    updateUser(parent, args, context, info) {
+        const updates = { ...args };
+        delete updates.id;
+        return context.prisma.mutation.updateUser(
+            {
+                data: updates,
+                where: {
+                    id: args.id,
+                },
+            },
+            info
+        );
     },
 };
 

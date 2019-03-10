@@ -16,7 +16,12 @@ type Query {
 }
 
 type Mutation {
-    signup(email: String!, password: String!, confirmPassword: String!): User!
+    signup(
+        userName: String!
+        email: String!
+        password: String!
+        confirmPassword: String!
+    ): User!
     signin(email: String!, password: String!): User!
     signout: ActionMessage
     createItem(
@@ -37,6 +42,7 @@ type Mutation {
     ): User!
     updateUserLevel(userLevel: UserLevel!, userId: ID!): User!
     createOrder(token: String!): Order!
+    updateUser(id: ID!, firstName: String, lastName: String): User!
 }
 
 type User {

@@ -8,6 +8,7 @@ import { SigninForm } from './styles/SigninForm';
 import StyledButton from './styles/StyledButton';
 import ErrorMsg from './ErrorMsg';
 import Form from './styles/Form';
+import FormContainer from './styles/FormContainer';
 
 const SIGNIN_MUTATION = gql`
 	mutation SIGNIN_MUTATION($email: String!, $password: String!) {
@@ -53,7 +54,7 @@ class Signin extends Component {
 						);
 					}
 					return (
-						<div>
+						<FormContainer>
 							{error && <ErrorMsg error={error} />}
 							<SigninForm>
 								<Form
@@ -100,7 +101,7 @@ class Signin extends Component {
 									</Link>
 								</div>
 							</SigninForm>
-						</div>
+						</FormContainer>
 					);
 				}}
 			</Mutation>
