@@ -16,10 +16,7 @@ class AccountPage extends Component {
 				<Head>
 					<title>Hype-gear || My Account </title>
 				</Head>
-				<div>
-					<h2>This is your account page</h2>
-					{pageComponent}
-				</div>
+				<>{pageComponent}</>
 			</div>
 		);
 	}

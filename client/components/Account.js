@@ -2,8 +2,24 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Link from 'next/link';
+import styled from 'styled-components';
 import PleaseSignIn from './PleaseSignIn';
 import ErrorMsg from './ErrorMsg';
+
+const StyledAccount = styled.div`
+	padding: 2rem;
+
+	a {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	hr {
+		border: 0;
+		border-bottom: 1px solid black;
+	}
+`;
 
 const USERINFO_QUERY = gql`
 	query {
@@ -27,7 +43,9 @@ class Account extends Component {
 						if (error) return <ErrorMsg error={error} />;
 						if (data.self) {
 							return (
-								<div>
+								<StyledAccount>
+									<h2>This is your account page</h2>
+									<hr />
 									<table>
 										<tbody>
 											<tr>
@@ -61,26 +79,6 @@ class Account extends Component {
 															data.self.lastName}
 												</td>
 											</tr>
-											<tr>
-												<td>
-													<strong>Address:</strong>
-												</td>
-												<td />
-											</tr>
-											<tr>
-												<td>
-													<strong>
-														Postal Code:
-													</strong>
-												</td>
-												<td />
-											</tr>
-											<tr>
-												<td>
-													<strong>City:</strong>
-												</td>
-												<td />
-											</tr>
 										</tbody>
 									</table>
 									<hr />
@@ -97,7 +95,7 @@ class Account extends Component {
 										<a>Update Details</a>
 									</Link>
 									<br />
-								</div>
+								</StyledAccount>
 							);
 						} else {
 							return <p>Nothing to see here</p>;
