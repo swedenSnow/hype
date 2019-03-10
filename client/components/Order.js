@@ -84,7 +84,7 @@ const Order = props => {
 									<td>
 										{format(
 											order.createdAt,
-											'MMMM d, YYYY h:mm a'
+											'MMMM D, YYYY h:mm a'
 										)}
 									</td>
 									<td>
