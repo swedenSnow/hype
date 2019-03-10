@@ -62,9 +62,9 @@ class Checkout extends React.Component {
 								stripeKey="pk_test_BAcR59TBc30CmwVo7WDqP0sv"
 								email={self.email}
 								token={res => this.onToken(res, createOrder)}
-								// shippingAddress
-								// billingAddress={false}
-								// zipCode={false}
+								shippingAddress
+								billingAddress={false}
+								zipCode={false}
 								bitcoin
 							>
 								{this.props.children}
