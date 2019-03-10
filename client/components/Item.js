@@ -47,7 +47,7 @@ const ListItem = styled.div`
 			content: 'SOLD';
 			position: absolute;
 			top: 80px;
-			left: 60px;
+			left: 150px;
 			z-index: 1;
 			font-family: Arial, sans-serif;
 			-webkit-transform: rotate(-45deg);

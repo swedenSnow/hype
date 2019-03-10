@@ -7,9 +7,16 @@ const StyledButton = styled.button`
 	border-radius: 3px;
 	padding: 0.8rem 4rem;
 	text-transform: uppercase;
+	transition: all 0.4s ease;
+	-webkit-transition: all 0.4s ease-in-out;
 	font-size: ${props => props.theme.medium};
 	&[disabled] {
 		opacity: 0.5;
+	}
+	&:hover {
+		background: ${props => props.theme.white};
+		color: ${props => props.theme.black};
+		border: 1px solid black;
 	}
 	a {
 		color: ${props => props.theme.white};

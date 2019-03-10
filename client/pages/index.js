@@ -16,6 +16,13 @@ const StyledGrid = styled.div`
 		align-items: flex-end;
 		position: relative;
 		overflow: hidden;
+		transition: all 0.4s ease;
+		-webkit-transition: all 0.4s ease-in-out;
+		&:hover {
+			h2 {
+				border-bottom: 2px solid white;
+			}
+		}
 	}
 
 	.shop {
@@ -58,6 +65,8 @@ const StyledGrid = styled.div`
 	}
 
 	.overlay {
+		transition: all 0.4s ease;
+		-webkit-transition: all 0.4s ease;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -94,6 +103,8 @@ const StyledGrid = styled.div`
 		margin: 4vw;
 		z-index: 2;
 		line-height: 1.2;
+		-webkit-transition: all 0.4s ease;
+		transition: all 0.4s ease;
 
 		.content {
 			position: relative;
@@ -103,15 +114,15 @@ const StyledGrid = styled.div`
 			margin-bottom: 0.75rem;
 		}
 		h3 {
-			font-size: 2rem;
+			font-size: 1.5rem;
 			font-weight: 100;
 		}
 		h2 {
 			font-size: 3rem;
 			font-weight: 400;
-		}
-		&:hover {
-			background: red;
+			margin-bottom: 0.75rem;
+			transition: all 0.4s ease;
+			-webkit-transition: all 0.4s ease;
 		}
 	}
 `;

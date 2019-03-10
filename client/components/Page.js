@@ -25,6 +25,8 @@ const theme = {
 const StyledPage = styled.div`
 	margin-top: ${props => props.theme.XL};
 	background: ${props => props.theme.lightgrey};
+	transition: all 0.4s ease;
+	-webkit-transition: all 0.4s ease;
 `;
 
 const Inner = styled.div`
