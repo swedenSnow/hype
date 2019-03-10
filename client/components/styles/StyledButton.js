@@ -21,6 +21,9 @@ const StyledButton = styled.button`
 	a {
 		color: ${props => props.theme.white};
 	}
+	&:hover a {
+		color: ${props => props.theme.black};
+	}
 `;
 
 export default StyledButton;

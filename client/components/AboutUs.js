@@ -54,7 +54,6 @@ const StyledAbout = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin: 1rem;
 		object-fit: contain;
 	}
 	.image {
@@ -64,6 +63,28 @@ const StyledAbout = styled.div`
 		img {
 			width: 100%;
 			object-fit: contain;
+		}
+	}
+	@media only screen and (max-width: 650px) {
+		.left-container,
+		.right-container {
+			min-width: 80%;
+
+			img {
+				margin: 2rem 0 2rem 0;
+			}
+		}
+		.left-container {
+			margin-right: 0;
+		}
+		.right-container {
+			img {
+				display: none;
+			}
+		}
+		.title {
+			text-align: center;
+			padding-bottom: 2rem;
 		}
 	}
 `;

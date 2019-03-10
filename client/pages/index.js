@@ -23,6 +23,10 @@ const StyledGrid = styled.div`
 			}
 		}
 	}
+	@media only screen and (max-width: 650px) {
+		grid-template-columns: 100%;
+		grid-template-areas: 'main' 'top' 'bottom';
+	}
 
 	.shop {
 		grid-area: main;
@@ -133,8 +137,6 @@ const HomePage = props => (
 			<title>Hype-gear || Home</title>
 		</Head>
 		<div className="hero">
-			<hr />
-
 			<StyledGrid>
 				<div className="item shop">
 					<Link href="/shop">
