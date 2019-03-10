@@ -23,7 +23,7 @@ const theme = {
 };
 
 const StyledPage = styled.div`
-	margin-top: ${props => props.theme.XL};
+	margin-top: ${props => props.theme.medium};
 	background: ${props => props.theme.lightgrey};
 	transition: all 0.4s ease;
 	-webkit-transition: all 0.4s ease;

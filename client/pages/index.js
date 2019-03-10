@@ -6,7 +6,6 @@ import Link from 'next/link';
 const StyledGrid = styled.div`
 	display: grid;
 	height: calc(100vh - 5rem);
-
 	grid-template-columns: 50% 50%;
 	grid-template-areas: 'main top' 'main bottom';
 	grid-gap: 1px;
@@ -109,6 +108,7 @@ const StyledGrid = styled.div`
 		.content {
 			position: relative;
 			transition: transform 0.35s ease;
+			padding-bottom: 0.75rem;
 		}
 		.link-content {
 			margin-bottom: 0.75rem;
@@ -147,7 +147,7 @@ const HomePage = props => (
 									<div className="link-content">
 										<h3>Shop</h3>
 									</div>
-									<h2>Shop Now</h2>
+									<h2>Browse Our Shop</h2>
 								</div>
 							</div>
 						</a>
