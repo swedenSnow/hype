@@ -76,12 +76,14 @@ class Cart extends Component {
 									</p>
 								</TotalCheckout>
 							</div>
-							{self.cart.length && (
+							{self.cart.length ? (
 								<Checkout>
 									<StyledButton disabled={false}>
 										Checkout
 									</StyledButton>
 								</Checkout>
+							) : (
+								''
 							)}
 						</div>
 					);

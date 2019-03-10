@@ -56,6 +56,7 @@ const Order = props => {
 		<Query query={ORDER_QUERY} variables={{ id: props.id }}>
 			{({ data, loading, error }) => {
 				if (loading) return <p>Loading...</p>;
+				if (!data.order) <p>No order found for that ID.</p>;
 				const { order } = data;
 				return (
 					<div>

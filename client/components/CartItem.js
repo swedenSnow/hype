@@ -12,6 +12,8 @@ const CartItemStyles = styled.li`
 	display: grid;
 	align-items: center;
 	grid-template-columns: auto 1fr auto;
+
+	overflow: hidden;
 	img {
 		margin-right: ${props => props.theme.root};
 	}
