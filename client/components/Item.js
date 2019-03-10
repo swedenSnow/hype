@@ -43,30 +43,27 @@ const ListItem = styled.div`
 		position: relative;
 		width: 100%;
 		height: 100%;
-		&::after {
-			content: 'SOLD';
-			position: absolute;
-			top: 80px;
-			left: 150px;
-			z-index: 1;
-			font-family: Arial, sans-serif;
-			-webkit-transform: rotate(-45deg);
-			-moz-transform: rotate(-45deg);
-			-ms-transform: rotate(-45deg);
-			-o-transform: rotate(-45deg);
-			transform: rotate(-45deg);
-			font-size: 64px;
-			color: #c00;
-			background: #fff;
-			border: solid 4px #c00;
-			padding: 10px;
-			border-radius: 10px;
-			zoom: 1;
-			filter: alpha(opacity=20);
-			opacity: 0.2;
-			-webkit-text-shadow: 0 0 2px #c00;
-			text-shadow: 0 0 2px #c00;
-			box-shadow: 0 0 2px #c00;
+
+		.image {
+			&::after {
+				content: 'SOLD';
+				position: absolute;
+				top: 80px;
+				z-index: 1;
+				font-family: Arial, sans-serif;
+				transform: rotate(-45deg);
+				font-size: 64px;
+				color: #c00;
+				background: #fff;
+				border: solid 4px #c00;
+				padding: 10px;
+				border-radius: 10px;
+				zoom: 1;
+				filter: alpha(opacity=20);
+				opacity: 0.2;
+				text-shadow: 0 0 2px #c00;
+				box-shadow: 0 0 2px #c00;
+			}
 		}
 
 		img {
