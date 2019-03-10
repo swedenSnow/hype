@@ -8,12 +8,13 @@ const HeaderStyled = styled.header`
 	flex-flow: row wrap;
 	background-color: ${props => props.theme.white};
 	margin-bottom: -1rem;
-	padding: ${props => props.theme.XL};
+	justify-content: space-between;
+	padding-bottom: 2rem;
 
 	.logo {
 		margin-left: 2rem;
 		text-decoration: underline;
-		width: 50%;
+		width: 20%;
 	}
 `;
 
@@ -22,7 +23,7 @@ const Header = () => (
 		<div className="logo">
 			<Link href="/">
 				<a>
-					<img src="../static/img/logo3.svg" alt="logo" width="210" />
+					<img src="../static/img/logo3.svg" alt="logo" width="190" />
 				</a>
 			</Link>
 		</div>

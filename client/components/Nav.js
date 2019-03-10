@@ -10,16 +10,23 @@ import CartCount from './CartCount';
 
 const NavStyled = styled.nav`
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 	font-size: ${props => props.theme.root};
 	font-family: 'Open', sans-serif;
 	font-weight: 300;
+	flex-wrap: wrap;
+	width: calc(80%-4rem);
 
 	ul {
+		/* position: absolute;
+		right: 0; */
+		width: 100%;
+		padding-right: 2rem;
 		list-style-type: none;
+		flex: 1;
 		li {
 			display: inline;
-			padding-right: 1em;
+			/* padding-right: 1em; */
 
 			a {
 				display: inline-block;
