@@ -7,7 +7,7 @@ const HeaderStyled = styled.header`
 	align-items: center;
 	flex-flow: row wrap;
 	background-color: ${props => props.theme.white};
-	margin-bottom: -1rem;
+	/* margin-bottom: -1rem; */
 	justify-content: space-between;
 	padding-bottom: 2rem;
 

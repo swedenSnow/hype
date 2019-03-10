@@ -194,6 +194,11 @@ accepts@~1.3.5:
     mime-types "~2.1.18"
     negotiator "0.6.1"
 
+addressparser@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/addressparser/-/addressparser-1.0.1.tgz#47afbe1a2a9262191db6838e4fd1d39b40821746"
+  integrity sha1-R6++GiqSYhkdtoOOT9HTm0CCF0Y=
+
 adm-zip@^0.4.7:
   version "0.4.13"
   resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.4.13.tgz#597e2f8cc3672151e1307d3e95cddbc75672314a"
@@ -3612,6 +3617,25 @@ lcid@^2.0.0:
   dependencies:
     invert-kv "^2.0.0"
 
+libbase64@1.0.3, libbase64@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/libbase64/-/libbase64-1.0.3.tgz#de3023234abeefeb9d49378804c8a94404f5c98c"
+  integrity sha512-ULQZAATVGTAgVNwP61R+MbbSGNBy1tVzWupB9kbE6p+VccWd+J+ICXgOwQic5Yqagzpu+oPZ8sI7yXdWJnPPkA==
+
+libmime@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/libmime/-/libmime-4.0.1.tgz#dc71a19bfa6a97f8249d7205251d862d6fc599fb"
+  integrity sha512-mGgJLRkpkMxZZYE7ncVXokgKfi5ePrIB1H3W/Bv3GbkVnFydIHTsPrfAVW0edxalQHmFfqDMU9W45PidCLG6DA==
+  dependencies:
+    iconv-lite "0.4.23"
+    libbase64 "1.0.3"
+    libqp "1.1.0"
+
+libqp@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/libqp/-/libqp-1.1.0.tgz#f5e6e06ad74b794fb5b5b66988bf728ef1dedbe8"
+  integrity sha1-9ebgatdLeU+1tbZpiL9yjvHe2+g=
+
 load-json-file@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-2.0.0.tgz#7947e42149af80d696cbf797bcaabcfe1fe29ca8"
@@ -4147,6 +4171,30 @@ node-request-by-swagger@^1.0.6:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/node-request-by-swagger/-/node-request-by-swagger-1.1.4.tgz#909a057bd4dffdf5245cb713f5543a9c56eea94d"
   integrity sha512-hwaTaFPUwNKns5qXwGJpLQM3Z5zRluYeAxpYy1L8fWmWdT/DjLmsnW8/oGlSN8Vo4R28c2znfUoBUiB/RlPptw==
+
+nodemailer-build-attachment@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/nodemailer-build-attachment/-/nodemailer-build-attachment-1.0.5.tgz#0018f40e539af29308694001e270dfdb6c498b42"
+  integrity sha512-9W8Wco6kyowoGvEO4XjOFQ00QEfGtdczrQHxhC7sSdxhHTqQOMJXHrmLLE77ab9CMz8JJP4ljq8M4g4t9UpMJQ==
+  dependencies:
+    libbase64 "^1.0.3"
+    libmime "^4.0.1"
+    nodemailer-fetch "^2.1.0"
+
+nodemailer-fetch@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/nodemailer-fetch/-/nodemailer-fetch-2.1.0.tgz#41f631d16b31da55e28249688b329167ddd0d651"
+  integrity sha1-QfYx0Wsx2lXigkloizKRZ93Q1lE=
+
+nodemailer-postmark-transport@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/nodemailer-postmark-transport/-/nodemailer-postmark-transport-2.1.1.tgz#80d5104efd91229e7fc725fb1c974fbb5c6ab0bd"
+  integrity sha512-DkXcs20qkRKn8X0fEUAPpNU6WPWYs2ysZdWuvLOk/5Ry7q3235u/DiZMhcFrXqt0X+JMYdimypEJaDxCLUnfFQ==
+  dependencies:
+    addressparser "^1.0.1"
+    async "^2.6.1"
+    nodemailer-build-attachment "^1.0.5"
+    postmark "^2.2.3"
 
 nodemailer@^5.1.1:
   version "5.1.1"
@@ -4697,6 +4745,13 @@ postgres-interval@^1.1.0:
   integrity sha512-fC3xNHeTskCxL1dC8KOtxXt7YeFmlbTYtn7ul8MkVERuTmf7pI4DrkAxcw3kh1fQ9uz4wQmd03a1mRiXUZChfQ==
   dependencies:
     xtend "^4.0.0"
+
+postmark@^2.2.3, postmark@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/postmark/-/postmark-2.2.4.tgz#30a9ef57f738009bae14aa22f2f62e497b6f4a08"
+  integrity sha512-qzqcXrKQnSGIScOpCNz2ArC69zHSuVZKo8RLg8Nioz633NIi4aVYeBNBwCn1hfAcQ/g/eCAyTAvVbMYyPmlSzQ==
+  dependencies:
+    request "^2.88.0"
 
 prepend-http@^1.0.1:
   version "1.0.4"
