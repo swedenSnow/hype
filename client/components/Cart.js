@@ -47,8 +47,9 @@ class Cart extends Component {
 								</a>
 							</Link>
 							<h3>
-								This is {!self.name ? ' an Noname' : self.name}{' '}
-								cart
+								{self.firstName && (
+									<p>{self.firstName}'s' Cart</p>
+								)}
 							</h3>
 							<p>
 								{self.cart.length === 0 && (
