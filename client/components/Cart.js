@@ -36,7 +36,6 @@ class Cart extends Component {
 							</>
 						);
 
-					console.log(self);
 					return (
 						<div>
 							<Link href="/shop">
