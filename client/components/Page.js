@@ -32,8 +32,8 @@ const StyledPage = styled.div`
 const Inner = styled.div`
 	/* max-width: ${props => props.theme.maxWidthInner}; */
 	margin: 0 auto;
-	/* padding: 2rem; */
-	box-shadow: ${props => props.theme.boxShadow};
+
+	/* box-shadow: ${props => props.theme.boxShadow}; */
 `;
 
 const GlobalStyle = createGlobalStyle`
