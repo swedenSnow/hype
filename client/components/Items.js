@@ -9,9 +9,10 @@ const ListItemsTitle = styled.div`
 	text-transform: uppercase;
 	color: ${props => props.theme.blue};
 	font-family: 'Ubuntu', sans-serif;
+	margin-top: 2rem;
 	& h2 {
-		padding: 2rem;
-		font-weight: 500;
+		font-size: 3rem;
+		font-weight: 700;
 	}
 `;
 

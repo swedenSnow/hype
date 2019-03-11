@@ -17,10 +17,6 @@ const CURRENTUSER_QUERY = gql`
 					price
 					image
 					description
-					user {
-						firstName
-						email
-					}
 				}
 			}
 		}

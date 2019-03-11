@@ -10,6 +10,7 @@ import AddToCart from './AddToCart';
 import User from './User';
 import DeleteItem from './DeleteItem';
 import StyledButton from './styles/StyledButton';
+import StyledPage from './styles/StyledPage';
 import formatMoney from '../lib/formatMoney';
 
 const ItemActions = styled.div`
@@ -17,6 +18,39 @@ const ItemActions = styled.div`
 
 	button {
 		margin-right: 1rem;
+	}
+`;
+
+const StyledItem = styled.div`
+	.item-title {
+		text-transform: uppercase;
+	}
+
+	img {
+		width: 150px;
+	}
+
+	@media (min-width: 576px) {
+		img {
+			width: 200px;
+		}
+	}
+
+	@media (min-width: 768px) {
+		img {
+			width: 300px;
+		}
+	}
+
+	@media (min-width: 992px) {
+		img {
+			width: 400px;
+		}
+	}
+
+	hr {
+		border: 0;
+		border-bottom: 1px solid #000;
 	}
 `;
 
@@ -64,86 +98,91 @@ class SingleItem extends Component {
 									? item.user.userName
 									: item.user.id;
 								return (
-									<div>
+									<StyledPage>
 										<Head>
 											<title>
-												Hype-gear || {item.title}{' '}
+												Hype-gear || {item.title}
 											</title>
 										</Head>
-										<p>
-											<strong>Title: </strong>
-											{item.title}
-										</p>
-										<p>
-											<strong>Price: </strong>
-											{formatMoney(item.price)}
-										</p>
-										<img
-											width="200px" //move this
-											src={item.image}
-											alt={item.title}
-										/>
-										<p>
-											<strong>Description:</strong>
-											<br />
-											{item.description}
-										</p>
-										<p>
-											<strong>By User: </strong>
-											<Link
-												href={{
-													pathname: '/user',
-													query: { id: item.user.id },
-												}}
-											>
-												<a>{userName}</a>
-											</Link>
-										</p>
-										{!item.sold ? (
-											<AddToCart id={item.id} />
-										) : (
-											<strong>Out of stock.</strong>
-										)}
+										<StyledItem>
+											<h2 className="item-title">
+												{item.title}
+											</h2>
+											<p>
+												<strong>Price: </strong>
+												{formatMoney(item.price)}
+											</p>
+											<img
+												src={item.image}
+												alt={item.title}
+											/>
+											<p>
+												<strong>Description:</strong>
+												<br />
+												{item.description}
+											</p>
+											<p>
+												<strong>Sold By User: </strong>
+												<Link
+													href={{
+														pathname: '/user',
+														query: {
+															id: item.user.id,
+														},
+													}}
+												>
+													<a>{userName}</a>
+												</Link>
+											</p>
+											{!item.sold ? (
+												<AddToCart id={item.id} />
+											) : (
+												<strong>Out of stock.</strong>
+											)}
 
-										{self && self.id === item.user.id && (
-											<>
-												<hr />
-												<ItemActions>
-													<StyledButton>
-														<Link
-															href={{
-																pathname:
-																	'updateitem',
-																query: {
-																	id: item.id,
-																},
-															}}
+											{self && self.id === item.user.id && (
+												<>
+													<hr />
+													<ItemActions>
+														<StyledButton>
+															<Link
+																href={{
+																	pathname:
+																		'updateitem',
+																	query: {
+																		id:
+																			item.id,
+																	},
+																}}
+															>
+																<a>
+																	<FontAwesomeIcon
+																		icon={
+																			faPencilAlt
+																		}
+																	/>{' '}
+																	Update Item
+																</a>
+															</Link>
+														</StyledButton>
+														<DeleteItem
+															id={item.id}
 														>
-															<a>
-																<FontAwesomeIcon
-																	icon={
-																		faPencilAlt
-																	}
-																/>{' '}
-																Update Item
-															</a>
-														</Link>
-													</StyledButton>
-													<DeleteItem id={item.id}>
-														{' '}
-														<FontAwesomeIcon
-															icon={faTrash}
-														/>{' '}
-														Delete Item
-													</DeleteItem>
-												</ItemActions>
-											</>
-										)}
-										<hr />
-										<Link href="/shop">
-											<a>Back to Items</a>
-										</Link>
-									</div>
+															{' '}
+															<FontAwesomeIcon
+																icon={faTrash}
+															/>{' '}
+															Delete Item
+														</DeleteItem>
+													</ItemActions>
+												</>
+											)}
+											<hr />
+											<Link href="/shop">
+												<a>Back to Items</a>
+											</Link>
+										</StyledItem>
+									</StyledPage>
 								);
 							}}
 						</Query>
