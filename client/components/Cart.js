@@ -12,9 +12,39 @@ import calcTotalPrice from '../lib/calcTotalPrice';
 import Checkout from './Checkout';
 import formatMoney from '../lib/formatMoney';
 
+const StyledCart = styled.div`
+	display: flex;
+	flex-flow: column wrap;
+	max-width: ${props => props.theme.maxWidthInner};
+	margin: 0 auto;
+	padding: 6rem 0 6rem 0;
+
+	a {
+		align-self: flex-end;
+	}
+	.cart-name-container {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+		align-items: center;
+		padding-bottom: 0;
+		font-size: 3rem;
+		h3 {
+			font-weight: 300;
+		}
+	}
+	.checkout * > * {
+		width: 100%;
+	}
+`;
+
 const TotalCheckout = styled.div`
+	padding: 1rem 0 1rem 0;
+	width: 100%;
+	h2,
 	p {
 		font-size: 2rem;
+		font-weight: 300;
 	}
 `;
 
@@ -37,35 +67,47 @@ class Cart extends Component {
 						);
 
 					return (
-						<div>
-							<Link href="/shop">
+						<StyledCart>
+							{/* <Link href="/shop">
 								<a>
 									<CloseButton title="close">
 										&times;
 									</CloseButton>
 								</a>
-							</Link>
-							<h3>
-								{self.firstName && (
-									<p>{self.firstName}'s' Cart</p>
-								)}
-							</h3>
-							<p>
+							</Link> */}
+							<div className="cart-name-container">
+								<h3>
+									{self.firstName && (
+										<p>{self.firstName}'s' Cart</p>
+									)}
+								</h3>
+								<Link href="/shop">
+									<a>
+										<CloseButton title="close">
+											&times;
+										</CloseButton>
+									</a>
+								</Link>
+							</div>
+							<em>
 								{self.cart.length === 0 && (
 									<em>Your cart is currently empty</em>
 								)}
 								{self.cart.length > 0 &&
-									`You have ${self.cart.length} item
-										${self.cart.length === 1 ? '' : 's'} in
+									`You have ${self.cart.length} item${
+										self.cart.length === 1 ? '' : "'s"
+									} in
 										your cart.`}
-							</p>
+							</em>
 							<div>
 								<ul>
 									{self.cart.map(cartItem => (
-										<CartItem
-											key={cartItem.id}
-											cartItem={cartItem}
-										/>
+										<>
+											<CartItem
+												key={cartItem.id}
+												cartItem={cartItem}
+											/>
+										</>
 									))}
 								</ul>
 								<TotalCheckout>
@@ -76,15 +118,17 @@ class Cart extends Component {
 								</TotalCheckout>
 							</div>
 							{self.cart.length ? (
-								<Checkout>
-									<StyledButton disabled={false}>
-										Checkout
-									</StyledButton>
-								</Checkout>
+								<div className="checkout">
+									<Checkout>
+										<StyledButton disabled={false}>
+											Checkout
+										</StyledButton>
+									</Checkout>
+								</div>
 							) : (
 								''
 							)}
-						</div>
+						</StyledCart>
 					);
 				}}
 			</User>

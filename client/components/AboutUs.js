@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const StyledAbout = styled.div`
 	max-width: 1200px;
 	margin: 0 auto;
-	height: 100%;
+	height: calc(100vh - 9rem);
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
