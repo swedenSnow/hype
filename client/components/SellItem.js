@@ -121,13 +121,9 @@ class SellItem extends Component {
 												width="200px"
 											/>
 										)}
-										"Välj fil"-knappen på höger sida plz -
-										<a href="https://stackoverflow.com/questions/18917710/how-do-i-position-the-file-input-button-on-the-right-hand-side-inside-the-textfi">
-											Fix it
-										</a>
 									</label>
 									<label htmlFor="description">
-										Description
+										Description:
 										<textarea
 											name="description"
 											value={this.state.description}
