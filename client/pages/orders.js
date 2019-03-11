@@ -6,9 +6,9 @@ const OrdersPage = props => (
 		<Head>
 			<title>Hype-gear || My Orders</title>
 		</Head>
-		<div>
+		<>
 			<Orders />
-		</div>
+		</>
 	</div>
 );
 

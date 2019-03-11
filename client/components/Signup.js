@@ -6,6 +6,7 @@ import { SignupForm } from './styles/SignupForm';
 import StyledButton from './styles/StyledButton';
 import ErrorMsg from './ErrorMsg';
 import FormContainer from './styles/FormContainer';
+import Form from './styles/Form';
 
 const SIGNUP_MUTATION = gql`
 	mutation SIGNUP_MUTATION(
@@ -61,7 +62,7 @@ class Signup extends Component {
 						<FormContainer>
 							<SignupForm>
 								{error && <ErrorMsg error={error} />}
-								<form
+								<Form
 									method="post"
 									onSubmit={async e => {
 										e.preventDefault();
@@ -114,7 +115,7 @@ class Signup extends Component {
 										</label>
 										<StyledButton>Sign Up</StyledButton>
 									</fieldset>
-								</form>
+								</Form>
 							</SignupForm>
 						</FormContainer>
 					);
