@@ -18,21 +18,17 @@ const NavStyled = styled.nav`
 	width: calc(80%-4rem);
 
 	ul {
-		/* position: absolute;
-		right: 0; */
 		width: 100%;
 		padding-right: 2rem;
 		list-style-type: none;
 		flex: 1;
 		li {
 			display: inline;
-			/* padding-right: 1em; */
 
 			a {
 				display: inline-block;
 				text-decoration: none;
 				letter-spacing: 1px;
-				/* text-transform: uppercase; */
 				position: relative;
 				-webkit-transition: all 0.4s ease;
 				transition: all 0.4s ease;
