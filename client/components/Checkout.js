@@ -48,19 +48,23 @@ class Checkout extends React.Component {
 					>
 						{createOrder => (
 							<StripeCheckout
-								amount={calcTotalPrice(self.cart)}
+								amount={self && calcTotalPrice(self.cart)}
 								currency="EUR"
 								name="Hype-Gear"
-								description={`Order of ${totalItems(
-									self.cart
-								)} item${self.cart === 1 ? '' : 's'}`}
+								description={
+									self &&
+									`Order of ${totalItems(self.cart)} item${
+										self.cart === 1 ? '' : 's'
+									}`
+								}
 								image={
+									self &&
 									self.cart.length &&
 									self.cart[0].item &&
 									self.cart[0].item.image
 								}
 								stripeKey="pk_test_BAcR59TBc30CmwVo7WDqP0sv"
-								email={self.email}
+								email={self && self.email}
 								token={res => this.onToken(res, createOrder)}
 								shippingAddress
 								billingAddress={false}

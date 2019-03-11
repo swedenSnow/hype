@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const StyledGrid = styled.div`
 	display: grid;
-	height: calc(100vh - 5rem);
+	height: calc(100vh - 9rem);
 	grid-template-columns: 50% 50%;
 	grid-template-areas: 'main top' 'main bottom';
 	grid-gap: 1px;

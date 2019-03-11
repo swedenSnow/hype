@@ -17,13 +17,12 @@ const theme = {
 	offWhite: '#EDEDED',
 	lightgrey: '#f5f5f5',
 	black: '#181717',
-	maxWidthInner: '1100px',
+	maxWidthInner: '1200px',
 	boxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
 };
 
 const StyledPage = styled.div`
-	margin-top: ${props => props.theme.medium};
-	background: ${props => props.theme.lightgrey};
+	background: ${props => props.theme.white};
 	transition: all 0.4s ease;
 	-webkit-transition: all 0.4s ease;
 `;
@@ -44,6 +43,9 @@ const GlobalStyle = createGlobalStyle`
 		}
 		h1,h2,h3,h4,h5, p{
 			margin: 0;
+		}
+		ul {
+			padding: 0;
 		}
 
 
