@@ -21,7 +21,7 @@ const transportMailTrap = nodemailer.createTransport({
 const htmlEmail = text => `
     <h2>Password Reset for HypeGear</h2>
     <p>${text}</p>
-    <p>😘, Häni</p>
+    <p>All the best, Staff at Hype-gear&copy;, 😘</p>
 `;
 
 exports.transport = transport;
