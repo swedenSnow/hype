@@ -68,13 +68,6 @@ class Cart extends Component {
 
 					return (
 						<StyledCart>
-							{/* <Link href="/shop">
-								<a>
-									<CloseButton title="close">
-										&times;
-									</CloseButton>
-								</a>
-							</Link> */}
 							<div className="cart-name-container">
 								<h3>
 									{self.firstName && (
@@ -102,12 +95,10 @@ class Cart extends Component {
 							<div>
 								<ul>
 									{self.cart.map(cartItem => (
-										<>
-											<CartItem
-												key={cartItem.id}
-												cartItem={cartItem}
-											/>
-										</>
+										<CartItem
+											key={cartItem.id}
+											cartItem={cartItem}
+										/>
 									))}
 								</ul>
 								<TotalCheckout>
