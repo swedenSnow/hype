@@ -17,7 +17,7 @@ const StyledCart = styled.div`
 	flex-flow: column wrap;
 	max-width: ${props => props.theme.maxWidthInner};
 	margin: 0 auto;
-	padding: 6rem 0 6rem 0;
+	padding: 6rem 3rem;
 
 	a {
 		align-self: flex-end;
@@ -28,7 +28,7 @@ const StyledCart = styled.div`
 		justify-content: space-between;
 		align-items: center;
 		padding-bottom: 0;
-		font-size: 3rem;
+		font-size: 2rem;
 		h3 {
 			font-weight: 300;
 		}

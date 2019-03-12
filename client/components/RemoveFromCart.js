@@ -23,6 +23,12 @@ const RemoveButton = styled.button`
 		color: ${props => props.theme.blue};
 		cursor: pointer;
 	}
+	@media only screen and (max-width: 650px) {
+		text-align: right;
+		position: absolute;
+		right: 0;
+		padding-right: 4rem;
+	}
 `;
 
 class RemoveFromCart extends React.Component {

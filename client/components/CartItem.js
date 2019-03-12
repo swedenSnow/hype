@@ -13,17 +13,27 @@ const CartItemStyles = styled.li`
 	align-items: center;
 	grid-template-columns: auto 1fr auto;
 	font-weight: 200;
-
 	overflow: hidden;
+
 	img {
 		margin: 0 ${props => props.theme.XL} 0 ${props => props.theme.XL};
 	}
 	p {
 		font-size: 2rem;
 	}
+	@media only screen and (max-width: 650px) {
+		grid-template-columns: 1fr;
+
+		img {
+			margin: 0 auto;
+		}
+		.cart-item-details {
+			text-align: center;
+		}
+	}
 
 	.cart-item-details h3 {
-		font-size: 5rem;
+		font-size: 3rem;
 		font-weight: 300;
 		button {
 			margin-right: 2rem;
