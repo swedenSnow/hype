@@ -13,7 +13,7 @@ const StyledButton = styled.button`
 	&[disabled] {
 		opacity: 0.5;
 	}
-	&:hover {
+	&:not([disabled]):hover {
 		background: ${props => props.theme.white};
 		color: ${props => props.theme.black};
 		border: 1px solid black;
