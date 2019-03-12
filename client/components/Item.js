@@ -71,6 +71,7 @@ const ListItem = styled.div`
 				font-family: Arial, sans-serif;
 				transform: rotate(-45deg);
 				font-size: 48px;
+				font-weight: 900;
 				color: #c00;
 				background: #fff;
 				border: solid 4px #c00;
