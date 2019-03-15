@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import SellItem from '../components/SellItem';
 
-const SigninPage = () => (
+const SigninPage = props => (
 	<div>
 		<Head>
 			<title>Hype-gear || Sell an item</title>

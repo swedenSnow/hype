@@ -1,38 +1,61 @@
-import React from 'react';
-//import Link from 'next/link';
+import React, { Component } from 'react';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 import Item from './Item';
+import styled from 'styled-components';
 
-const testItem1 = {
-	id: 0,
-	name: 'Test Item #1',
-	price: 1000,
-	description: 'This is just for testing',
-};
+const ListItemsTitle = styled.div`
+	text-align: center;
+	text-transform: uppercase;
+	color: ${props => props.theme.blue};
+	font-family: 'Ubuntu', sans-serif;
+	margin-top: 2rem;
+	& h2 {
+		font-size: 3rem;
+		font-weight: 700;
+	}
+`;
 
-const testItem2 = {
-	id: 1,
-	name: 'Test Item #2',
-	price: 2000,
-	description: 'This is just for testing',
-};
+const ListItem = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+`;
 
-const testItem3 = {
-	id: 2,
-	name: 'Test Item #3',
-	price: 3000,
-	description: 'This is just for testing',
-};
+const ALLITEMS_QUERY = gql`
+	query ALLITEMS_QUERY {
+		items {
+			id
+			title
+			price
+			description
+			image
+			sold
+		}
+	}
+`;
 
-const itemsArray = [testItem1, testItem2, testItem3];
-
-// ToDo: map test items meanwhile...
-// Next Link and send in the item? or the whole god damn array... dunno.
-
-const Items = props => (
-	<div>
-		Some Items here...
-		<Item />
-	</div>
-);
+class Items extends Component {
+	render() {
+		return (
+			<Query query={ALLITEMS_QUERY}>
+				{({ data, loading, error }) => {
+					const items = data.items;
+					return (
+						<div>
+							<ListItemsTitle>
+								<h2>All items for sale</h2>
+							</ListItemsTitle>
+							<ListItem>
+								{items.map(item => (
+									<Item key={item.id} item={item} />
+								))}
+							</ListItem>
+						</div>
+					);
+				}}
+			</Query>
+		);
+	}
+}
 
 export default Items;

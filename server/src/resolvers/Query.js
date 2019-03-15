@@ -1,22 +1,90 @@
+const { forwardTo } = require('prisma-binding');
+
 const Query = {
-    posts: (_, args, context, info) => {
-        return context.prisma.query.posts(
+    item: forwardTo('prisma'),
+    items: forwardTo('prisma'),
+    user(_, args, context, info) {
+        return context.prisma.query.user(
             {
                 where: {
-                    OR: [
-                        { title_contains: args.searchString },
-                        { content_contains: args.searchString },
-                    ],
+                    id: args.id,
                 },
             },
             info
         );
     },
-    user: (_, args, context, info) => {
+    async users(parent, args, context, info) {
+        if (!context.request.userId) {
+            throw new Error('You must be logged in!');
+        }
+
+        if (context.request.user.userLevel !== 'ADMIN') {
+            throw new Error(`You don't have permissions to view this page.`);
+        }
+
+        return context.prisma.query.users({}, info);
+    },
+    self(_, args, context, info) {
+        if (!context.request.userId) {
+            return null;
+        }
         return context.prisma.query.user(
             {
+                where: { id: context.request.userId },
+            },
+            info
+        );
+    },
+    async order(_, args, context, info) {
+        if (!context.request.userId) {
+            throw new Error('You must be logged in!');
+        }
+
+        const order = await context.prisma.query.order(
+            {
+                where: { id: args.id },
+            },
+            info
+        );
+
+        const ownsOrder = (order.user.id = context.request.userId);
+
+        const isAdmin = context.request.user.userLevel === 'ADMIN';
+
+        if (!ownsOrder && !isAdmin) {
+            throw new Error(
+                'You are not allowed to see the information for this order.'
+            );
+        }
+
+        return order;
+    },
+    async orders(_, args, context, info) {
+        const { userId } = context.request;
+
+        if (!userId) {
+            throw new Error('You must be logged in!');
+        }
+
+        const isAdmin = context.request.user.userLevel === 'ADMIN';
+
+        if (!isAdmin) {
+            throw new Error(
+                'You are not allowed to see the information for this order.'
+            );
+        }
+
+        return context.prisma.query.orders({}, info);
+    },
+    async myOrders(parent, args, context, info) {
+        const { userId } = context.request;
+        if (!userId) {
+            throw new Error('You must be logged in!');
+        }
+        return context.prisma.query.orders(
+            {
                 where: {
-                    id: args.id,
+                    user: { id: userId },
                 },
             },
             info

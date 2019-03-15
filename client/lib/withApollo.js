@@ -6,6 +6,14 @@ export default withApollo(
 	({ ctx, headers, initialState }) =>
 		new ApolloClient({
 			uri: GRAPHQL_URL,
+			request: operation => {
+				operation.setContext({
+					fetchOptions: {
+						credentials: 'include',
+					},
+					headers,
+				});
+			},
 			cache: new InMemoryCache().restore(initialState || {}),
 		})
 );

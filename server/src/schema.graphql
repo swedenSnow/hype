@@ -1,13 +1,56 @@
 # import * from './generated/prisma.graphql'
 
+type ActionMessage {
+    message: String
+}
+
 type Query {
-  posts(searchString: String): [Post!]!
-  user(id: ID!): User
+    user(id: ID!): User
+    users: [User]!
+    self: User
+    item(where: ItemWhereUniqueInput!): Item
+    items: [Item]!
+    order(id: ID!): Order
+    orders(orderBy: OrderOrderByInput): [Order]!
+    myOrders(orderBy: OrderOrderByInput): [Order]!
 }
 
 type Mutation {
-  createDraft(authorId: ID!, title: String!, content: String!): Post
-  publish(id: ID!): Post
-  deletePost(id: ID!): Post
-  signup(name: String!): User!
+    signup(
+        userName: String!
+        email: String!
+        password: String!
+        confirmPassword: String!
+    ): User!
+    signin(email: String!, password: String!): User!
+    signout: ActionMessage
+    createItem(
+        title: String!
+        description: String!
+        price: Int!
+        image: String!
+    ): Item!
+    updateItem(id: ID!, title: String, description: String, price: Int): Item!
+    deleteItem(id: ID!): ActionMessage
+    addToCart(id: ID!): CartItem
+    removeFromCart(id: ID!): CartItem
+    requestReset(email: String!): ActionMessage
+    resetPassword(
+        resetToken: String!
+        password: String!
+        confirmPassword: String!
+    ): User!
+    updateUserLevel(userLevel: UserLevel!, userId: ID!): User!
+    createOrder(token: String!): Order!
+    updateUser(id: ID!, firstName: String, lastName: String): User!
+}
+
+type User {
+    id: ID!
+    userName: String
+    firstName: String
+    lastName: String
+    email: String!
+    cart: [CartItem!]!
+    userLevel: UserLevel
 }

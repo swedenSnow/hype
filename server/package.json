@@ -5,14 +5,21 @@
   "main": "index.js",
   "dependencies": {
     "babel-preset-env": "^1.7.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.4",
     "dotenv": "^6.2.0",
     "eslint-plugin-graphql": "^3.0.3",
     "graphql": "^14.1.1",
     "graphql-cli": "^3.0.9",
     "graphql-yoga": "^1.17.4",
+    "jsonwebtoken": "^8.4.0",
+    "nodemailer": "^5.1.1",
+    "nodemailer-postmark-transport": "^2.1.1",
     "nodemon": "^1.18.10",
+    "postmark": "^2.2.4",
     "prisma": "^1.26.4",
-    "prisma-binding": "^2.3.2"
+    "prisma-binding": "^2.3.2",
+    "stripe": "^6.25.1"
   },
   "devDependencies": {},
   "scripts": {
