@@ -66,8 +66,6 @@ class Signin extends Component {
 											email: '',
 											password: '',
 										});
-
-										console.log(res);
 									}}
 								>
 									<fieldset>

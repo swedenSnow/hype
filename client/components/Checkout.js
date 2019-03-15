@@ -36,7 +36,6 @@ class Checkout extends React.Component {
 		}).catch(err => {
 			alert(err.message);
 		});
-		console.log(order);
 	};
 	render() {
 		return (

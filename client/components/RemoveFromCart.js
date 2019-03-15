@@ -37,9 +37,7 @@ class RemoveFromCart extends React.Component {
 	};
 
 	update = (cache, payload) => {
-		console.log('Running remove update fnc');
 		const data = cache.readQuery({ query: CURRENTUSER_QUERY });
-		console.log(data);
 		const cartItemId = payload.data.removeFromCart.id;
 		data.self.cart = data.self.cart.filter(
 			cartItem => cartItem.id !== cartItemId

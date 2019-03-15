@@ -44,7 +44,6 @@ class SellItem extends Component {
 		const data = new FormData();
 
 		if (files.length === 0) {
-			console.log('no file selected');
 			return;
 		}
 
@@ -60,7 +59,6 @@ class SellItem extends Component {
 		);
 
 		const file = await res.json();
-		console.log(file);
 
 		if (file !== undefined) {
 			this.setState({
