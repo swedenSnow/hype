@@ -40,3 +40,8 @@ The application should be compiled with \`next build\` first.
 
 ## Repo
 https://github.com/swedenSnow/hype
+
+## Screenshots
+<img width="838" alt="Skärmavbild 2019-03-15 kl  19 26 56" src="https://user-images.githubusercontent.com/31956031/54453827-71982000-4758-11e9-9af7-c0b229ef2826.png">
+<img width="838" alt="Skärmavbild 2019-03-15 kl  19 27 07" src="https://user-images.githubusercontent.com/31956031/54453828-71982000-4758-11e9-8c12-c44a67684138.png">
+<img width="838" alt="Skärmavbild 2019-03-15 kl  19 27 36" src="https://user-images.githubusercontent.com/31956031/54453980-b91eac00-4758-11e9-89ca-6d0ebae068e3.png">
