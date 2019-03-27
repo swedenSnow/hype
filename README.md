@@ -18,10 +18,18 @@ $ yarn
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory(server & client), you can run:
 
 ### `yarn dev`
 
+Do this first in the server directory:
+```bash
+$yarn dev # will start the dev server on port 4000 for server
+```
+Then in the client directory:
+```bash
+$yarn dev # will start the dev server on port 3000 for client
+```
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
