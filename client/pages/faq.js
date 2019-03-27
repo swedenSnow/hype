@@ -4,7 +4,11 @@ import FAQ from '../components/FAQ';
 
 const FAQpage = props => (
 	<div>
+		<Head>
+			<title>Hype-gear || FAQ </title>
+		</Head>
+
 		<FAQ />
 	</div>
 );
-export default FAQ;
+export default FAQpage;

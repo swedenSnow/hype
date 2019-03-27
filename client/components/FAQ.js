@@ -44,6 +44,9 @@ const StyledFAQ = styled.div`
 	.logo {
 		left: 1%;
 	}
+	ul {
+		padding-left: 2rem;
+	}
 `;
 
 class FAQ extends Component {
@@ -65,7 +68,14 @@ class FAQ extends Component {
 							other regular streetwear store.
 						</p>
 						<br />
-
+						<h4>What are YOUR responsibiltys as a seller?</h4>
+						<p>
+							High resolution pictures is a <strong>must</strong>{' '}
+							to be eligble to sell at Hype-gear. Otherwise your
+							item will be removed and you will possibly be banned
+							or at least sat on probation.
+						</p>
+						<br />
 						<h4>What determines the condition of your items?</h4>
 						<p>
 							At Hype-gear we grade the condition of items in a
